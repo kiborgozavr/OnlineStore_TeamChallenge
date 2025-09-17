@@ -1,0 +1,52 @@
+version: "3"
+services:
+  store:
+    container_name: store
+    image: kateryna2608/onlinestore-backend:latest
+
+    platform: linux/amd64
+    env_file:
+      - .env
+    environment:
+      - DATASOURCE_URL=${DATASOURCE_URL}
+      - DATASOURCE_USER=${DATASOURCE_USER}
+      - DATASOURCE_PASSWORD=${DATASOURCE_PASSWORD}
+      - JWT_TOKEN_KEY=${JWT_TOKEN_KEY}
+      - ALLOWED_ORIGINS=${ALLOWED_ORIGINS}
+      - CLOUDINARY_CLOUD_NAME=${CLOUDINARY_CLOUD_NAME}
+      - CLOUDINARY_API_KEY=${CLOUDINARY_API_KEY}
+      - CLOUDINARY_API_SECRET=${CLOUDINARY_API_SECRET}
+      - CLOUDINARY_PRODUCT_IMAGES_FOLDER_NAME=${CLOUDINARY_PRODUCT_IMAGES_FOLDER_NAME}
+      - SPRING_PROFILES_ACTIVE=${SPRING_PROFILES_ACTIVE}
+      - FRONTEND_SERVER_URL=${FRONTEND_SERVER_URL}
+      - MAIL_HOST=${MAIL_HOST}
+      - MAIL_PORT=${MAIL_PORT}
+      - MAIL_USERNAME=${MAIL_USERNAME}
+      - MAIL_PASSWORD=${MAIL_PASSWORD}
+    ports:
+      - "8085:8085"
+    networks:
+      - onlinestore
+    restart: on-failure
+    depends_on:
+      - database
+  database:
+    container_name: database_onlinestore
+    image: postgres:14-alpine
+    platform: linux/amd64
+    build:
+      context: ./database-image
+      dockerfile: "Dockerfile"
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    ports:
+      - "5433:5432"
+    networks:
+      - onlinestore
+    volumes:
+      - /var/lib/postgresql/data
+networks:
+  onlinestore:
+

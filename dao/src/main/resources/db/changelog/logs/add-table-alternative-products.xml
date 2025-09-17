@@ -1,0 +1,35 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+    <changeSet id="create_alternative_products_table" author="Oleksandr Bogdanets">
+        <createTable tableName="alternative_products">
+            <column name="id" type="bigint" autoIncrement="true"/>
+            <column name="product_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="alternative_product_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="attribute_value_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addPrimaryKey tableName="alternative_products" columnNames="id" constraintName="PK_alternative_products"/>
+        <addForeignKeyConstraint baseTableName="alternative_products" baseColumnNames="product_id"
+                                 constraintName="FK_alternative_products_base_product"
+                                 referencedTableName="products"
+                                 referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="alternative_products" baseColumnNames="alternative_product_id"
+                                 constraintName="FK_alternative_products_alternative_product"
+                                 referencedTableName="products"
+                                 referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="alternative_products" baseColumnNames="attribute_value_id"
+                                 constraintName="FK_alternative_products_attribute_value"
+                                 referencedTableName="attribute_values"
+                                 referencedColumnNames="id"/>
+        <createIndex tableName="alternative_products" indexName="FK_alternative_products_base_product">
+            <column name="product_id"/>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>

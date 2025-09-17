@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="add-column-alternative-attribute-value-to-alternative-product" author="Oleksandr Bogdanets">
+        <addColumn tableName="alternative_products">
+            <column name="alternative_attribute_value_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+        <addForeignKeyConstraint baseTableName="alternative_products" baseColumnNames="alternative_attribute_value_id"
+                                 constraintName="FK_alternative_products_alternative_attribute_value"
+                                 referencedTableName="attribute_values"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+</databaseChangeLog>
