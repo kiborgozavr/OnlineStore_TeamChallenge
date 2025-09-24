@@ -43,7 +43,6 @@ values
     (40, 11, 'https://res.cloudinary.com/dtbnu6abl/image/upload/v1745929575/Product_Image_1_eopaww.png', 2),
     (41, 11, 'https://res.cloudinary.com/dtbnu6abl/image/upload/v1745929577/Product_Image_2_yw7w2w.png', 3),
     (42, 12, 'https://res.cloudinary.com/dtbnu6abl/image/upload/v1745929688/Product_Image_1_kbfeps.png', 1),
-    (43, 12, 'https://res.cloudinary.com/dtbnu6abl/image/upload/v1745929688/Product_Image_1_kbfeps.png', 2),
     (44, 12, 'https://res.cloudinary.com/dtbnu6abl/image/upload/v1745929697/Product_Image_2_qqbnsq.png', 3),
     (45, 12, 'https://res.cloudinary.com/dtbnu6abl/image/upload/v1745929698/Product_Image_3_g4kbbh.png', 4),
     (46, 13, 'https://res.cloudinary.com/dtbnu6abl/image/upload/v1745929852/1_qyuu42.png', 1),

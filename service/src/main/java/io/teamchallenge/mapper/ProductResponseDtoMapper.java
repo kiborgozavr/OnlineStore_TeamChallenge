@@ -77,13 +77,13 @@ public class ProductResponseDtoMapper extends AbstractConverter<Product, Product
                     product.getReviews().stream()
                 .mapToInt(Review::getRate)
                 .average()
-                .orElse(3.0))) //TODO
+                .orElse(0.0)))
             .build();
     }
 
     private double roundedRating(double rating) {
         return (rating == 0) ? 0.0 : Math.round(rating * 2) / 2.0;
-    } //TODO
+    }
 
     private HashMap<String, List<AlternativeProductDto>> getAlternativeProducts(Product product) {
 

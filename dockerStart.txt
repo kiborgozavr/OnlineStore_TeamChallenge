@@ -1,0 +1,13 @@
+1.
+./mvnw clean package -DskipTests
+
+2.
+docker buildx build --no-cache -t kateryna2608/onlinestore-backend:latest .
+
+or
+
+docker buildx build --no-cache -t kateryna2608/onlinestore-backend:latest --push .
+
+3.
+
+docker-compose up
