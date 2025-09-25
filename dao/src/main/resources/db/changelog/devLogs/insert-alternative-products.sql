@@ -17,6 +17,8 @@ values
 
 --Apple iPhone 15 128GB Pink
 (7, 6, 13, 11),
+(7, 8, 108, 129),
+(7, 21, 1, 2),
 
 --Apple iPhone 13 128Gb Starlight
 (8, 6, 129, 108),
