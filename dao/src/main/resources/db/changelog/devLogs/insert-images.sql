@@ -12,7 +12,6 @@ values
     (9, 3, 'https://res.cloudinary.com/dtbnu6abl/image/upload/v1745928672/1_u2e3we.png', 1),
     (10, 3, 'https://res.cloudinary.com/dtbnu6abl/image/upload/v1745928672/2_kp3jjj.png', 2),
     (11, 3, 'https://res.cloudinary.com/dtbnu6abl/image/upload/v1745928672/3_mlimq3.png', 3),
-    (12, 3, 'https://res.cloudinary.com/dtbnu6abl/image/upload/v1745928672/2_kp3jjj.png', 4),
     (13, 4, 'https://res.cloudinary.com/dtbnu6abl/image/upload/v1745928806/Product_image_yjtuqd.png', 1),
     (14, 4, 'https://res.cloudinary.com/dtbnu6abl/image/upload/v1745928805/Product_image_1_lwyhqj.png', 2),
     (15, 4, 'https://res.cloudinary.com/dtbnu6abl/image/upload/v1745928805/Product_image_2_ouxfqi.png', 3),
@@ -20,7 +19,6 @@ values
     (17, 5, 'https://res.cloudinary.com/dtbnu6abl/image/upload/v1745928914/Product_image_hiz22z.png', 1),
     (18, 5, 'https://res.cloudinary.com/dtbnu6abl/image/upload/v1745928913/Product_image_1_wc3kir.png', 2),
     (19, 5, 'https://res.cloudinary.com/dtbnu6abl/image/upload/v1745928913/Product_image_2_jkib9q.png', 3),
-    (20, 5, 'https://res.cloudinary.com/dtbnu6abl/image/upload/v1745928913/Product_image_2_jkib9q.png', 4),
     (21, 6, 'https://res.cloudinary.com/dtbnu6abl/image/upload/v1745929091/Product_image_xarqbl.png', 1),
     (22, 6, 'https://res.cloudinary.com/dtbnu6abl/image/upload/v1745929091/Product_image_1_kkfdac.png', 2),
     (23, 6, 'https://res.cloudinary.com/dtbnu6abl/image/upload/v1745929091/Product_image_2_dnxfg2.png', 3),
@@ -28,7 +26,6 @@ values
     (25, 7, 'https://res.cloudinary.com/dtbnu6abl/image/upload/v1745929165/Product_image_1_khhluy.png', 2),
     (26, 7, 'https://res.cloudinary.com/dtbnu6abl/image/upload/v1745929166/Product_image_2_kgrljs.png', 3),
     (27, 8, 'https://res.cloudinary.com/dtbnu6abl/image/upload/v1745929242/Product_image_1_stpgqc.png', 1),
-    (28, 8, 'https://res.cloudinary.com/dtbnu6abl/image/upload/v1745929242/Product_image_1_stpgqc.png', 2),
     (29, 8, 'https://res.cloudinary.com/dtbnu6abl/image/upload/v1745929243/Product_image_2_rhaqz7.png', 3),
     (30, 8, 'https://res.cloudinary.com/dtbnu6abl/image/upload/v1745929246/Product_image_3_rrgllr.png', 4),
     (31, 9,'https://res.cloudinary.com/dtbnu6abl/image/upload/v1745929386/Product_Image_svjd0w.png', 1),
@@ -83,7 +80,7 @@ values
     (79, 23, 'https://res.cloudinary.com/dtbnu6abl/image/upload/v1754142469/41HuQPBFjOL_lq34ll_uqjxu7.jpg', 2),
     (80, 23, 'https://res.cloudinary.com/dtbnu6abl/image/upload/v1754142471/65305880-4_xhyfjm_x8zot8.jpg', 3);
 
-    --Last is 81
+    --Last id is 81
 
 
 
