@@ -1,23 +1,34 @@
 insert into orders(full_name, email, phone_number, address_id,
-    is_paid, delivery_status, delivery_method, comment, created_at)
-    VALUES
+                   is_paid, payment_method, delivery_status, delivery_method, comment, created_at)
+VALUES
     ('Alice Smith', 'alice.smith@gmail.com', '0911111111', 1,
-    true, 'PAID', 'COURIER', null, '2025-06-01T10:00:00'),
+        true, 'PREPAYMENT', 'PAID', 'COURIER', null, '2025-06-01T10:00:00'),
+
     ('Bob Johnson', 'bob.johnson@gmail.com', '0922222222', 2,
-    true, 'PAID', 'NOVA', null, '2025-06-01T15:00:00'),
+        true, 'PREPAYMENT', 'PAID', 'NOVA', null, '2025-06-01T15:00:00'),
+
     ('Carol White', 'carol.white@gmail.com', '0933333333', 3,
-    false, 'CANCEL', 'UKRPOSHTA', null, '2025-06-02T08:00:00'),
+        false, 'IN_POST_OFFICE', 'CANCEL', 'UKRPOSHTA', null, '2025-06-02T08:00:00'),
+
     ('David Brown', 'david.brown@gmail.com', '0944444444', 4,
-    false, 'RETURNED', 'NOVA', 'Please call me to confirm that all products are in stock', '2025-06-04T10:00:00'),
+        false, 'IN_POST_OFFICE', 'RETURNED', 'NOVA', 'Please call me to confirm that all products are in stock',
+        '2025-06-04T10:00:00'),
+
     ('Emily Davis', 'emily.davis@gmail.com', '0955555555', 5,
-    true, 'SENT', 'COURIER', null, '2025-06-04T20:00:24'),
+        true, 'PREPAYMENT', 'SENT', 'COURIER', null, '2025-06-04T20:00:24'),
+
     ('Frank Miller', 'frank.miller@gmail.com', '0966666666', 6,
-    false, 'CANCEL', 'NOVA', 'Please send the product in a week, I am currently away', '2025-06-05T12:30:12'),
+        false, 'TO_SELLER_BANK_ACCOUNT', 'CANCEL', 'NOVA', 'Please send the product in a week, I am currently away',
+        '2025-06-05T12:30:12'),
+
     ('Grace Wilson', 'grace.wilson@gmail.com', '0977777777', 7,
-    true, 'RETURNED', 'UKRPOSHTA', ' ', '2025-06-07T09:45:52'),
+        true, 'PREPAYMENT', 'RETURNED', 'UKRPOSHTA', ' ', '2025-06-07T09:45:52'),
+
     ('Hannah King', 'hannah.king@gmail.com', '0988888888', 8,
-    false, 'SENT', 'COURIER', null, '2025-06-10T20:14:06'),
+        false, 'TO_SELLER_BANK_ACCOUNT', 'SENT', 'COURIER', null, '2025-06-10T20:14:06'),
+
     ('John Doe', 'test_user@gmail.com', '0999999999', 9,
-    true, 'PAID', 'NOVA', null, '2025-05-01T20:00:00'),
+        true, 'PREPAYMENT', 'PAID', 'NOVA', null, '2025-05-01T20:00:00'),
+
     ('John Doe', 'test_user@gmail.com', '0999999999', 10,
-    false, 'SENT', 'COURIER', 'Contact me a day in advance about the delivery', '2025-06-15T20:00:00');
+        false, 'COURIER', 'SENT', 'COURIER', 'Contact me a day in advance about the delivery', '2025-06-15T20:00:00');

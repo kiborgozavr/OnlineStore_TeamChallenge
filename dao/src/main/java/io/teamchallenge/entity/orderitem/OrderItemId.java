@@ -2,7 +2,9 @@ package io.teamchallenge.entity.orderitem;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
+
 import java.io.Serializable;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -20,8 +22,10 @@ import lombok.ToString;
 @ToString
 @EqualsAndHashCode
 public class OrderItemId implements Serializable {
+
     @Column(name = "order_id")
     private Long orderId;
+
     @Column(name = "product_id")
     private Long productId;
 }
