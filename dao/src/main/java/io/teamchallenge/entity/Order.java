@@ -3,6 +3,7 @@ package io.teamchallenge.entity;
 import io.teamchallenge.entity.orderitem.OrderItem;
 import io.teamchallenge.enumerated.DeliveryMethod;
 import io.teamchallenge.enumerated.DeliveryStatus;
+import io.teamchallenge.enumerated.PaymentMethod;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
@@ -22,20 +23,12 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
+@Data
 @Entity
 @Table(name = "orders")
-@Getter
-@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString(exclude = {"address", "orderItems"})
@@ -53,20 +46,24 @@ public class Order {
     @JoinColumn(name = "address_id")
     private Address address;
 
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
-    @Setter(AccessLevel.PRIVATE)
-    private List<OrderItem> orderItems = new ArrayList<>();
+    @Enumerated(EnumType.STRING)
+    @Column(name = "payment_method", nullable = false)
+    private PaymentMethod paymentMethod;
 
     @Column(nullable = false)
     private Boolean isPaid;
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "delivery_method", nullable = false)
+    private DeliveryMethod deliveryMethod;
+
+    @Enumerated(EnumType.STRING)
     @Column(name = "delivery_status", nullable = false)
     private DeliveryStatus deliveryStatus;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "delivery_method", nullable = false)
-    private DeliveryMethod deliveryMethod;
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    @Setter(AccessLevel.PRIVATE)
+    private List<OrderItem> orderItems = new ArrayList<>();
 
     @Column
     private String comment;

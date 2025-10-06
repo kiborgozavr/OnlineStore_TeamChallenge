@@ -3,19 +3,21 @@ package io.teamchallenge.entity.orderitem;
 import io.teamchallenge.entity.Order;
 import io.teamchallenge.entity.Product;
 import jakarta.persistence.*;
+
 import java.math.BigDecimal;
+
 import lombok.*;
 
+@Data
 @Entity
 @Table(name = "order_items")
-@Getter
-@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString(exclude = {"order","product"})
+@ToString(exclude = {"order", "product"})
+@EqualsAndHashCode(exclude = {"order", "product"})
 @Builder
-@EqualsAndHashCode(exclude = {"order","product"})
 public class OrderItem {
+
     @EmbeddedId
     private OrderItemId id;
 
@@ -30,6 +32,8 @@ public class OrderItem {
     @Column(nullable = false)
     private Integer quantity;
 
-    @Column(name = "price",nullable = false)
+    @Column(name = "price", nullable = false)
     private BigDecimal price;
 }
+
+

@@ -1,10 +1,10 @@
 package io.teamchallenge.dto.order;
 
-
 import io.teamchallenge.dto.address.AddressDto;
 import io.teamchallenge.dto.cart.CartItemRequestDto;
 import io.teamchallenge.enumerated.DeliveryMethod;
 import io.teamchallenge.enumerated.DeliveryStatus;
+import io.teamchallenge.enumerated.PaymentMethod;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -13,13 +13,10 @@ import lombok.*;
 
 import java.util.List;
 
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@ToString
-@EqualsAndHashCode
 public class OrderUpdateRequestDto {
 
     @Email(message = "Please, insert valid email address")
@@ -40,7 +37,7 @@ public class OrderUpdateRequestDto {
     private DeliveryMethod deliveryMethod;
 
     //TODO: add constraints for payment method
-    private String paymentMethod;
+    private PaymentMethod paymentMethod;
 
     @NotNull
     private AddressDto address;

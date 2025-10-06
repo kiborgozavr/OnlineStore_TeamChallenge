@@ -122,8 +122,11 @@ public class OrderService {
                 .fullName(orderRequestDto.getFullName())
                 .build());
         order.setAddress(modelMapper.map(orderRequestDto.getAddress(), Address.class));
+
+        order.setPaymentMethod(orderRequestDto.getPaymentMethod());
         order.setDeliveryMethod(orderRequestDto.getDeliveryMethod());
         order.setDeliveryStatus(orderRequestDto.getDeliveryStatus());
+
         order.setComment(orderRequestDto.getComment());
 
         List<OrderItem> orderItems = order.getOrderItems();
@@ -223,10 +226,14 @@ public class OrderService {
                         .fullName(orderRequestDto.getFullName())
                         .phoneNumber(orderRequestDto.getPhoneNumber())
                         .build())
+
+                .paymentMethod(orderRequestDto.getPaymentMethod())
+                .isPaid(false)
                 .deliveryMethod(orderRequestDto.getDeliveryMethod())
                 .deliveryStatus(DeliveryStatus.ORDER)
+
                 .orderItems(new ArrayList<>())
-                .isPaid(false)
+
                 .comment(orderRequestDto.getComment())
                 .build();
     }

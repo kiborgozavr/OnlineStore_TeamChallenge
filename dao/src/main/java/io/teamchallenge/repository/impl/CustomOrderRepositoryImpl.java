@@ -14,9 +14,11 @@ import jakarta.persistence.criteria.Join;
 import jakarta.persistence.criteria.JoinType;
 import jakarta.persistence.criteria.Predicate;
 import jakarta.persistence.criteria.Root;
+
 import java.util.LinkedList;
 import java.util.List;
 import java.util.UUID;
+
 import org.hibernate.query.criteria.JpaCriteriaQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -50,10 +52,8 @@ public class CustomOrderRepositoryImpl implements CustomOrderRepository {
      * Retrieves a paginated list of order entities based on the specified filter
      * parameters.
      *
-     * @param filterParametersDto
-     *            the filter parameters to apply when retrieving the order entities
-     * @param pageable
-     *            the pagination information
+     * @param filterParametersDto the filter parameters to apply when retrieving the order entities
+     * @param pageable            the pagination information
      * @return a paginated list of order entities that match the filter parameters
      */
     @Override
@@ -68,8 +68,8 @@ public class CustomOrderRepositoryImpl implements CustomOrderRepository {
         List<Predicate> totalPredicates = getTotalPredicates(oij, filterParametersDto);
 
         mainQuery.where(predicates.toArray(new Predicate[0]))
-            .groupBy(mainRoot.get("id"))
-            .orderBy(order);
+                .groupBy(mainRoot.get("id"))
+                .orderBy(order);
 
         if (!totalPredicates.isEmpty()) {
             mainQuery.having(totalPredicates.toArray(new Predicate[0]));
@@ -77,7 +77,7 @@ public class CustomOrderRepositoryImpl implements CustomOrderRepository {
 
         TypedQuery<Order> countTotalTypedQuery = em.createQuery(mainQuery);
         List<Order> firstResults = countTotalTypedQuery.setFirstResult((int) pageable.getOffset())
-            .setMaxResults(pageable.getPageSize()).getResultList();
+                .setMaxResults(pageable.getPageSize()).getResultList();
 
         if (firstResults.isEmpty()) {
             return new PageImpl<>(firstResults, pageable, 0L);
@@ -105,7 +105,7 @@ public class CustomOrderRepositoryImpl implements CustomOrderRepository {
     }
 
     private List<jakarta.persistence.criteria.Order> getOrder(Pageable pageable, Root<Order> countTotalRoot,
-                                 Join<Order, OrderItem> oij) {
+                                                              Join<Order, OrderItem> oij) {
         Sort pageableSort = pageable.getSort();
         List<jakarta.persistence.criteria.Order> orders = new LinkedList<>();
 
@@ -113,8 +113,8 @@ public class CustomOrderRepositoryImpl implements CustomOrderRepository {
             if (order.getProperty().equals("total")) {
                 var totalPriceExpression = cb.sum(cb.prod(oij.get(PRICE), oij.get(QUANTITY)));
                 jakarta.persistence.criteria.Order totalOrder = order.getDirection().isAscending()
-                    ? cb.asc(totalPriceExpression)
-                    : cb.desc(totalPriceExpression);
+                        ? cb.asc(totalPriceExpression)
+                        : cb.desc(totalPriceExpression);
                 orders.add(totalOrder);
             } else {
                 orders.addAll(QueryUtils.toOrders(Sort.by(order), countTotalRoot, cb));
@@ -133,7 +133,7 @@ public class CustomOrderRepositoryImpl implements CustomOrderRepository {
         List<Predicate> predicatesCount = getAllPredicates(countRoot, filterParametersDto);
         List<Predicate> totalCountPredicates = getTotalPredicates(oij, filterParametersDto);
         countQuery.select(countRoot.get("id")).where(predicatesCount.toArray(new Predicate[0]))
-            .groupBy(countRoot.get("id"));
+                .groupBy(countRoot.get("id"));
 
         if (!totalCountPredicates.isEmpty()) {
             countQuery.having(totalCountPredicates.toArray(new Predicate[0]));
@@ -148,11 +148,11 @@ public class CustomOrderRepositoryImpl implements CustomOrderRepository {
         List<Predicate> predicates = new LinkedList<>();
         if (filterParametersDto.getTotalLess() != null) {
             predicates
-                .add(cb.le(cb.sum(cb.prod(oij.get(PRICE), oij.get(QUANTITY))), filterParametersDto.getTotalLess()));
+                    .add(cb.le(cb.sum(cb.prod(oij.get(PRICE), oij.get(QUANTITY))), filterParametersDto.getTotalLess()));
         }
         if (filterParametersDto.getTotalMore() != null) {
             predicates
-                .add(cb.ge(cb.sum(cb.prod(oij.get(PRICE), oij.get(QUANTITY))), filterParametersDto.getTotalMore()));
+                    .add(cb.ge(cb.sum(cb.prod(oij.get(PRICE), oij.get(QUANTITY))), filterParametersDto.getTotalMore()));
         }
         return predicates;
     }
