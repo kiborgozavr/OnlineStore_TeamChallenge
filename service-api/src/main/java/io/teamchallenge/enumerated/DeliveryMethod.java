@@ -1,5 +1,8 @@
 package io.teamchallenge.enumerated;
 
+import lombok.Getter;
+
+@Getter
 public enum DeliveryMethod {
     COURIER("By courier"),
     NOVA("Nova Poshta"),

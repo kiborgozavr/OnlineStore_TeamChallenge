@@ -34,10 +34,10 @@ public class OrderUpdateRequestDto {
     private List<CartItemRequestDto> cartItems;
 
     @NotNull
-    private DeliveryMethod deliveryMethod;
+    private String deliveryMethod;
 
-    //TODO: add constraints for payment method
-    private PaymentMethod paymentMethod;
+    @NotNull
+    private String paymentMethod;
 
     @NotNull
     private AddressDto address;

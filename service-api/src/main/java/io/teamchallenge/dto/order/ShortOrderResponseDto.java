@@ -9,13 +9,10 @@ import lombok.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@ToString
-@EqualsAndHashCode
 public class ShortOrderResponseDto {
     private Long id;
 
@@ -24,9 +21,9 @@ public class ShortOrderResponseDto {
     private String phoneNumber;
     private AddressDto address;
 
-    private PaymentMethod paymentMethod;
+    private String paymentMethod;
     private Boolean isPaid;
-    private DeliveryMethod deliveryMethod;
+    private String deliveryMethod;
     private DeliveryStatus deliveryStatus;
 
     private LocalDateTime createdAt;
