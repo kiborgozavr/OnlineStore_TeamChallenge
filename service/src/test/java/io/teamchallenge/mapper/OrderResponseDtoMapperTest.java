@@ -44,7 +44,7 @@ public class OrderResponseDtoMapperTest {
             .email(source.getContactInfo().getEmail())
             .fullName(source.getContactInfo().getFullName())
             .phoneNumber(source.getContactInfo().getPhoneNumber())
-            .deliveryMethod(source.getDeliveryMethod())
+            .deliveryMethod(source.getDeliveryMethod().getTitle())
             .deliveryStatus(source.getDeliveryStatus())
             .isPaid(source.getIsPaid())
             .orderItems(source.getOrderItems().stream().map(orderItem -> OrderItemResponseDto.builder()
