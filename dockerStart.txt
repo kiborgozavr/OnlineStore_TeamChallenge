@@ -3,11 +3,16 @@
 
 2.
 docker buildx build --no-cache -t kateryna2608/onlinestore-backend:latest .
+docker buildx build --no-cache -t kateryna2608/onlinestore-backend:test .
 
 or
 
 docker buildx build --no-cache -t kateryna2608/onlinestore-backend:latest --push .
+docker buildx build --no-cache -t kateryna2608/onlinestore-backend:test --push .
+docker buildx build --no-cache -t kateryna2608/onlinestore-backend:version-1.32.3 --push .
 
 3.
-
 docker-compose up
+
+4.
+git stash save locally
