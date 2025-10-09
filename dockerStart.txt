@@ -3,6 +3,7 @@
 
 2.
 docker buildx build --no-cache -t kateryna2608/onlinestore-backend:latest .
+docker buildx build --no-cache -t kateryna2608/onlinestore-backend:test .
 
 or
 
