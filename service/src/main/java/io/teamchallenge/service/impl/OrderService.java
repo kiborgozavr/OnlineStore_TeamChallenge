@@ -7,7 +7,9 @@ import io.teamchallenge.dto.user.UserVO;
 import io.teamchallenge.entity.*;
 import io.teamchallenge.entity.orderitem.OrderItem;
 import io.teamchallenge.entity.orderitem.OrderItemId;
+import io.teamchallenge.enumerated.DeliveryMethod;
 import io.teamchallenge.enumerated.DeliveryStatus;
+import io.teamchallenge.enumerated.PaymentMethod;
 import io.teamchallenge.exception.ConflictException;
 import io.teamchallenge.exception.ForbiddenException;
 import io.teamchallenge.exception.NotFoundException;
@@ -122,9 +124,8 @@ public class OrderService {
                 .fullName(orderRequestDto.getFullName())
                 .build());
         order.setAddress(modelMapper.map(orderRequestDto.getAddress(), Address.class));
-
-        order.setPaymentMethod(orderRequestDto.getPaymentMethod());
-        order.setDeliveryMethod(orderRequestDto.getDeliveryMethod());
+        order.setPaymentMethod(PaymentMethod.valueOf(orderRequestDto.getPaymentMethod()));
+        order.setDeliveryMethod(DeliveryMethod.valueOf(orderRequestDto.getDeliveryMethod()));
         order.setDeliveryStatus(orderRequestDto.getDeliveryStatus());
 
         order.setComment(orderRequestDto.getComment());
@@ -227,9 +228,9 @@ public class OrderService {
                         .phoneNumber(orderRequestDto.getPhoneNumber())
                         .build())
 
-                .paymentMethod(orderRequestDto.getPaymentMethod())
+                .paymentMethod(PaymentMethod.valueOf(orderRequestDto.getPaymentMethod()))
                 .isPaid(false)
-                .deliveryMethod(orderRequestDto.getDeliveryMethod())
+                .deliveryMethod(DeliveryMethod.valueOf(orderRequestDto.getDeliveryMethod()))
                 .deliveryStatus(DeliveryStatus.ORDER)
 
                 .orderItems(new ArrayList<>())

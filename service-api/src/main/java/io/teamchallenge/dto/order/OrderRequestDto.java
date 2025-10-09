@@ -12,13 +12,10 @@ import lombok.*;
 
 import java.util.List;
 
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@ToString
-@EqualsAndHashCode
 
 public class OrderRequestDto {
     @NotBlank
@@ -36,10 +33,10 @@ public class OrderRequestDto {
     private List<CartItemRequestDto> cartItems;
 
     @NotNull
-    private PaymentMethod paymentMethod;
+    private String paymentMethod;
 
     @NotNull
-    private DeliveryMethod deliveryMethod;
+    private String deliveryMethod;
 
     @NotNull
     private AddressDto address;
