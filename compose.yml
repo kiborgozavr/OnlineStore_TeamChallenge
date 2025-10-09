@@ -2,7 +2,7 @@ version: "3"
 services:
   store:
     container_name: store
-    image: kateryna2608/onlinestore-backend:latest
+    image: kateryna2608/onlinestore-backend:test
 
     platform: linux/amd64
     env_file:
