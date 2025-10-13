@@ -22,7 +22,7 @@ values
 
     -- Samsung Galaxy A24
     (18, 2, 1),  -- Memory ROM: 128 Gb
-    (19, 2, 4),  -- Memory RAM: 4 Gb
+    (19, 2, 5),  -- Memory RAM: 6 Gb
     (20, 2, 92), -- Color: Carbon Black
     (21, 2, 21), -- Display diagonal: 6.5 inches
     (22, 2, 27), -- Screen resolution: 1080 x 2340 pixels
@@ -36,7 +36,7 @@ values
     (30, 2, 52), -- Number of processor cores: Octa-core
     (31, 2, 123), -- Processor model: MediaTek Helio G99
     (32, 2, 56), -- Flesh card: Supports microSD
-    (33, 2, 59), -- Sensor resolution: 50 MP
+    (33, 2, 119), -- Sensor resolution: 50 MP
 
     -- Samsung Galaxy S24 Ultra
     (34, 3, 3),  -- Memory ROM: 512 Gb
@@ -51,7 +51,7 @@ values
     (43, 3, 44), -- Number of SIM cards: 2
     (44, 3, 46), -- SIM card size: Nano-SIM
     (45, 3, 49), -- Operating system: Android
-    (46, 3, 104), -- Processor frequency: 3.3 GHz
+    (46, 3, 114), -- Processor frequency: 3.3 GHz
     (47, 3, 52), -- Number of processor cores: Octa-core
     (48, 3, 113), -- Processor model: Snapdragon 8 Gen 3
     (49, 3, 57), -- Flesh card: Doesn't Support microSD
@@ -66,7 +66,7 @@ values
     (56, 4, 32),  -- Screen type: Super Retina XDR OLED
     (57, 4, 35),  -- Screen refresh rate: 120 Hz
     (58, 4, 110),  -- Glass protection technology: Ceramic Shield
-    (59, 4, 43),  -- Communication standards: 4G LTE
+    (59, 4, 42),  -- Communication standards: 5G
     (60, 4, 45),  -- Number of SIM cards: 1
     (61, 4, 46),  -- SIM card size: Nano-SIM
     (62, 4, 48),  -- Operating system: iOS
@@ -84,7 +84,7 @@ values
     (72, 5, 29),  -- Screen resolution: 1080 x 2350 pixels
     (73, 5, 34),  -- Screen type: Dynamic AMOLED 2X
     (74, 5, 35),  -- Screen refresh rate: 120 Hz
-    (75, 5, 43),  -- Communication standards: 4G LTE
+    (75, 5, 42),  -- Communication standards: 5G
     (76, 5, 44),  -- Number of SIM cards: 2
     (77, 5, 46),  -- SIM card size: Nano-SIM
     (78, 5, 49),  -- Operating system: Android
@@ -103,7 +103,7 @@ values
     (89, 6, 32),  -- Screen type: Super Retina XDR OLED
     (90, 6, 36),  -- Screen refresh rate: 60 Hz
     (91, 6, 110),  -- Glass protection technology: Ceramic Shield
-    (92, 6, 43),  -- Communication standards: 4G LTE
+    (92, 6, 42),  -- Communication standards: 5G
     (93, 6, 45),  -- Number of SIM cards: 1
     (94, 6, 46),  -- SIM card size: Nano-SIM
     (95, 6, 48),  -- Operating system: iOS
@@ -121,14 +121,14 @@ values
     (105, 7, 30),  -- Screen resolution: 2556 x 1179 pixels
     (106, 7, 32),  -- Screen type: Super Retina XDR OLED
     (107, 7, 36),  -- Screen refresh rate: 60 Hz
-    (108, 7, 40),  -- Glass protection technology: Gorilla Glass 5
+    (108, 7, 110),  -- Glass protection technology: Ceramic Shield
     (109, 7, 43),  -- Communication standards: 4G LTE
     (110, 7, 45),  -- Number of SIM cards: 1
     (111, 7, 46),  -- SIM card size: Nano-SIM
     (112, 7, 48),  -- Operating system: iOS
     (113, 7, 50),  -- Processor frequency: 3.0 GHz
     (114, 7, 52),  -- Number of processor cores: Octa-core
-    (115, 7, 54),  -- Processor model: A14 Bionic
+    (115, 7, 120),  -- Processor model: A16 Bionic
     (116, 7, 57),  -- Flesh card: No microSD support
     (117, 7, 59),  -- Sensor resolution: 12 MP
 
@@ -140,7 +140,7 @@ values
     (122, 8, 31),  -- Screen resolution: 2532 x 1170 pixels
     (123, 8, 32),  -- Screen type: Super Retina XDR OLED
     (124, 8, 36),  -- Screen refresh rate: 60 Hz
-    (125, 8, 41),  -- Glass protection technology: Gorilla Glass 3
+    (125, 8, 110),  -- Glass protection technology: Ceramic Shield
     (126, 8, 43),  -- Communication standards: 4G LTE
     (127, 8, 45),  -- Number of SIM cards: 1
     (128, 8, 46),  -- SIM card size: Nano-SIM
@@ -155,7 +155,7 @@ values
     (135, 9, 2),    -- Memory ROM: 256 Gb
     (136, 9, 6),    -- Memory RAM: 8 Gb
     (137, 9, 8),   -- Color: Gray
-    (138, 9, 61),   -- Display diagonal: 15.6 inches
+    (138, 9, 64),   -- Display diagonal: 15.6 inches
     (139, 9, 67),   -- Screen resolution: 1920 x 1080 pixels
     (140, 9, 68),   -- Screen type: IPS
     (141, 9, 36),   -- Screen refresh rate: 60 Hz
@@ -309,7 +309,7 @@ values
     (263, 22, 48),  -- Operating system: iOS
     (264, 22, 50),  -- Processor frequency: 3.0 GHz
     (265, 22, 52),  -- Number of processor cores: Octa-core
-    (266, 22, 54),  -- Processor model: A14 Bionic
+    (266, 22, 120),  -- Processor model: A14 Bionic
     (267, 22, 57),  -- Flesh card: No microSD support
     (268, 22, 59), -- Sensor resolution: 12 MP
 

@@ -16,7 +16,7 @@ values
     (13, 'Processor frequency'),
     (14, 'Number of processor cores'),
     (15, 'Processor model'),
-    (16, 'Flesh card'),
+    (16, 'Flash card'),
     (17, 'Main camera resolution'),
     (18, 'Video card'),
     (19, 'Bluetooth version'),
