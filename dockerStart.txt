@@ -9,7 +9,7 @@ or
 
 docker buildx build --no-cache -t kateryna2608/onlinestore-backend:latest --push .
 docker buildx build --no-cache -t kateryna2608/onlinestore-backend:test --push .
-docker buildx build --no-cache -t kateryna2608/onlinestore-backend:version-1.32.3 --push .
+docker buildx build --no-cache -t kateryna2608/onlinestore-backend:version-1.32.5 --push .
 
 3.
 docker-compose up
