@@ -13,6 +13,9 @@
         <dropColumn tableName="order_items">
             <column name="id"/>
         </dropColumn>
+        <addColumn tableName="orders">
+            <column name="payment_method" type="varchar(50)"/>
+        </addColumn>
 
         <addPrimaryKey tableName="order_items" columnNames="order_id,product_id" constraintName="PK_order_items"/>
     </changeSet>

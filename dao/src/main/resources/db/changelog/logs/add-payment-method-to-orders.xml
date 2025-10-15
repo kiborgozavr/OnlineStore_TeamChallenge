@@ -1,5 +1,0 @@
-<changeSet id="add-payment-method-to-orders" author="kateryna">
-    <addColumn tableName="orders">
-        <column name="payment_method" type="varchar(50)"/>
-    </addColumn>
-</changeSet>
