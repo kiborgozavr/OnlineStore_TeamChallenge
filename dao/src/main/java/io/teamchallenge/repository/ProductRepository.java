@@ -128,11 +128,16 @@ public interface ProductRepository
     Optional<Product> findByNameAndIdNot(String name, Long id);
 
     @Query("""
-        SELECT p.name from Product p WHERE lower(p.name) like :query%""")
+            
+            SELECT DISTINCT p.name FROM Product p WHERE lower(p.name) LIKE CONCAT('%', :query, '%')
+                        """)
     List<String> getSuggestions(@Param("query") String query);
 
     @Query("""
-        SELECT p from Product p WHERE  lower(p.name) like :query%""")
+
+            SELECT p FROM Product p
+            WHERE lower(p.name) LIKE CONCAT('%', :query, '%')
+                """)
     Page<Product> getSearchResults(@Param("query") String query, Pageable pageable);
 
     /**
