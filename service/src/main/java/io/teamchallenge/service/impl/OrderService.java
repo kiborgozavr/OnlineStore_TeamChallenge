@@ -124,8 +124,8 @@ public class OrderService {
                 .fullName(orderRequestDto.getFullName())
                 .build());
         order.setAddress(modelMapper.map(orderRequestDto.getAddress(), Address.class));
-        order.setPaymentMethod(PaymentMethod.valueOf(orderRequestDto.getPaymentMethod()));
-        order.setDeliveryMethod(DeliveryMethod.valueOf(orderRequestDto.getDeliveryMethod()));
+        order.setPaymentMethod(orderRequestDto.getPaymentMethod());
+        order.setDeliveryMethod(orderRequestDto.getDeliveryMethod());
         order.setDeliveryStatus(orderRequestDto.getDeliveryStatus());
 
         order.setComment(orderRequestDto.getComment());
@@ -228,9 +228,9 @@ public class OrderService {
                         .phoneNumber(orderRequestDto.getPhoneNumber())
                         .build())
 
-                .paymentMethod(PaymentMethod.valueOf(orderRequestDto.getPaymentMethod()))
+                .paymentMethod(orderRequestDto.getPaymentMethod())
                 .isPaid(false)
-                .deliveryMethod(DeliveryMethod.valueOf(orderRequestDto.getDeliveryMethod()))
+                .deliveryMethod(orderRequestDto.getDeliveryMethod())
                 .deliveryStatus(DeliveryStatus.ORDER)
 
                 .orderItems(new ArrayList<>())

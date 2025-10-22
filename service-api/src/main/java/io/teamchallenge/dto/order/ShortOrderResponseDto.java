@@ -21,9 +21,9 @@ public class ShortOrderResponseDto {
     private String phoneNumber;
     private AddressDto address;
 
-    private String paymentMethod;
+    private PaymentMethod paymentMethod;
     private Boolean isPaid;
-    private String deliveryMethod;
+    private DeliveryMethod deliveryMethod;
     private DeliveryStatus deliveryStatus;
 
     private LocalDateTime createdAt;

@@ -33,10 +33,10 @@ public class OrderRequestDto {
     private List<CartItemRequestDto> cartItems;
 
     @NotNull
-    private String paymentMethod;
+    private PaymentMethod paymentMethod;
 
     @NotNull
-    private String deliveryMethod;
+    private DeliveryMethod deliveryMethod;
 
     @NotNull
     private AddressDto address;
