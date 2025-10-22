@@ -1,8 +1,10 @@
 package io.teamchallenge.config;
 
 import io.teamchallenge.security.filter.AccessTokenJwtAuthenticationFilter;
+
 import java.util.Collections;
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -29,6 +31,7 @@ import static jakarta.servlet.http.HttpServletResponse.SC_UNAUTHORIZED;
 
 /**
  * Config for security.
+ *
  * @author Denys Liubchenko
  */
 @Configuration
@@ -65,103 +68,104 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.cors(cors -> cors
-                .configurationSource(configSource -> {
-                    CorsConfiguration config = new CorsConfiguration();
-                    config.setAllowedOrigins(allowedOrigins);
-                    config.setAllowedMethods(Collections.singletonList("*"));
-                    config.setAllowedHeaders(List.of("Access-Control-Allow-Origin", "Access-Control-Allow-Headers",
-                        "X-Requested-With", "Origin", "Content-Type", "Accept", "Authorization"));
-                    config.setAllowCredentials(!List.of("*").equals(allowedOrigins));
-                    config.setMaxAge(3600L);
-                    return config;
-                }))
-            .csrf(AbstractHttpConfigurer::disable)
-            .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-            .addFilterAfter(
-                accessTokenJwtAuthenticationFilter,
-                BasicAuthenticationFilter.class)
-            .exceptionHandling(exception -> exception
-                .authenticationEntryPoint((req, resp, exc) ->
-                    resp.sendError(SC_UNAUTHORIZED, "Please, authorize."))
-                .accessDeniedHandler((req, resp, exc) ->
-                    resp.sendError(SC_FORBIDDEN, "You don't have authorities.")))
-            .authorizeHttpRequests(req -> req
-                .requestMatchers(HttpMethod.POST,
-                    API_V1 + "/signUp",
-                    API_V1 + "/signIn",
-                    API_V1 + "/updateAccessToken",
-                    API_V1 + "/orders"
-                )
-                .permitAll()
-                .requestMatchers(HttpMethod.OPTIONS, "/**")
-                .permitAll()
-                .requestMatchers(
-                    "/v3/api-docs/**",
-                    "/swagger.json",
-                    "/swagger-ui.html",
-                    "/swagger-ui/index.html",
-                    "/swagger-ui/**",
-                    "/swagger-resources/**",
-                    "/webjars/**")
-                .permitAll()
-                .requestMatchers(HttpMethod.GET,
-                    API_V1 + "/categories/{id}/attribute-attributeValues",
-                    API_V1 + "/categories/{id}/attribute-attributeValues",
-                    API_V1 + "/products",
-                    API_V1 + "/brands",
-                    API_V1 + "/attributes",
-                    API_V1 + "/categories",
-                    API_V1 + "/products/{id}",
-                    "/hello",
-                    API_V1 + "/reviews/{productId}",
-                    API_V1 + "/change-password"
-                )
-                .permitAll()
-                .requestMatchers(HttpMethod.POST,
-                        API_V1 + "/reset-password",
-                        API_V1 + "/change-password"
-                )
-                .permitAll()
-                .requestMatchers(HttpMethod.GET,
-                    API_V1 + "/cart-items",
-                    API_V1 + "/orders/{order_id}",
-                    API_V1 + "/users/profile",
-                    API_V1 + "/favorite-products"
-                )
-                .hasAnyRole(USER,ADMIN)
-                .requestMatchers(HttpMethod.PUT,
-                    API_V1 + "/users/profile"
-                ).hasAnyRole(USER,ADMIN)
-                .requestMatchers(HttpMethod.POST,
-                    API_V1 + "/cart-items/{product_id}",
-                    API_V1 + "/reviews/{productId}",
-                    API_V1 + "/favorite-products/{productId}"
-                )
-                .hasAnyRole(USER,ADMIN)
-                .requestMatchers(HttpMethod.PATCH,
-                    API_V1 + "/cart-items/{product_id}",
-                    API_V1 + "/orders/cancel/{orderId}"
-                )
-                .hasAnyRole(USER,ADMIN)
-                .requestMatchers(HttpMethod.DELETE,
-                    API_V1 + "/cart-items/{product_id}",
-                    API_V1 + "/reviews/{productId}",
-                    API_V1 + "/favorite-products/{productId}"
-                )
-                .hasAnyRole(USER,ADMIN)
-                .requestMatchers(HttpMethod.POST,
-                    API_V1 + "/brands",
-                    API_V1 + "/categories",
-                    API_V1 + "/attributes",
-                    API_V1 + "/users/profile")
-                .hasRole(ADMIN)
-                .requestMatchers(HttpMethod.DELETE,
-                    API_V1 + "/reviews/{productId}/{userId}"
-                )
-                .hasRole(ADMIN)
-                .anyRequest()
-                .hasAnyRole(ADMIN)
-            ).build();
+                        .configurationSource(configSource -> {
+                            CorsConfiguration config = new CorsConfiguration();
+                            config.setAllowedOrigins(allowedOrigins);
+                            config.setAllowedMethods(Collections.singletonList("*"));
+                            config.setAllowedHeaders(List.of("Access-Control-Allow-Origin", "Access-Control-Allow-Headers",
+                                    "X-Requested-With", "Origin", "Content-Type", "Accept", "Authorization"));
+                            config.setAllowCredentials(!List.of("*").equals(allowedOrigins));
+                            config.setMaxAge(3600L);
+                            return config;
+                        }))
+                .csrf(AbstractHttpConfigurer::disable)
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .addFilterAfter(
+                        accessTokenJwtAuthenticationFilter,
+                        BasicAuthenticationFilter.class)
+                .exceptionHandling(exception -> exception
+                        .authenticationEntryPoint((req, resp, exc) ->
+                                resp.sendError(SC_UNAUTHORIZED, "Please, authorize."))
+                        .accessDeniedHandler((req, resp, exc) ->
+                                resp.sendError(SC_FORBIDDEN, "You don't have authorities.")))
+                .authorizeHttpRequests(req -> req
+                        .requestMatchers(HttpMethod.POST,
+                                API_V1 + "/signUp",
+                                API_V1 + "/signIn",
+                                API_V1 + "/updateAccessToken",
+                                API_V1 + "/orders"
+                        )
+                        .permitAll()
+                        .requestMatchers(HttpMethod.OPTIONS, "/**")
+                        .permitAll()
+                        .requestMatchers(
+                                "/v3/api-docs/**",
+                                "/swagger.json",
+                                "/swagger-ui.html",
+                                "/swagger-ui/index.html",
+                                "/swagger-ui/**",
+                                "/swagger-resources/**",
+                                "/webjars/**")
+                        .permitAll()
+                        .requestMatchers(HttpMethod.GET,
+                                API_V1 + "/categories/{id}/attribute-attributeValues",
+                                API_V1 + "/categories/{id}/attribute-attributeValues",
+                                API_V1 + "/products",
+                                API_V1 + "/brands",
+                                API_V1 + "/attributes",
+                                API_V1 + "/categories",
+                                API_V1 + "/products/{id}",
+                                "/hello",
+                                API_V1 + "/reviews/{productId}",
+                                API_V1 + "/change-password"
+                        )
+                        .permitAll()
+                        .requestMatchers(HttpMethod.POST,
+                                API_V1 + "/reset-password",
+                                API_V1 + "/change-password"
+                        )
+                        .permitAll()
+                        .requestMatchers(HttpMethod.GET,
+                                API_V1 + "/cart-items",
+                                API_V1 + "/orders/**",
+                                API_V1 + "/users/profile",
+                                API_V1 + "/favorite-products"
+                        )
+                        .hasAnyRole(USER, ADMIN)
+                        .requestMatchers(HttpMethod.PUT,
+                                API_V1 + "/users/profile",
+                                API_V1 + "/orders/**"
+                        ).hasAnyRole(USER, ADMIN)
+                        .requestMatchers(HttpMethod.POST,
+                                API_V1 + "/cart-items/{product_id}",
+                                API_V1 + "/reviews/{productId}",
+                                API_V1 + "/favorite-products/{productId}"
+                        )
+                        .hasAnyRole(USER, ADMIN)
+                        .requestMatchers(HttpMethod.PATCH,
+                                API_V1 + "/cart-items/{product_id}",
+                                API_V1 + "/orders/cancel/{orderId}"
+                        )
+                        .hasAnyRole(USER, ADMIN)
+                        .requestMatchers(HttpMethod.DELETE,
+                                API_V1 + "/cart-items/{product_id}",
+                                API_V1 + "/reviews/{productId}",
+                                API_V1 + "/favorite-products/{productId}"
+                        )
+                        .hasAnyRole(USER, ADMIN)
+                        .requestMatchers(HttpMethod.POST,
+                                API_V1 + "/brands",
+                                API_V1 + "/categories",
+                                API_V1 + "/attributes",
+                                API_V1 + "/users/profile")
+                        .hasRole(ADMIN)
+                        .requestMatchers(HttpMethod.DELETE,
+                                API_V1 + "/reviews/{productId}/{userId}"
+                        )
+                        .hasRole(ADMIN)
+                        .anyRequest()
+                        .hasAnyRole(ADMIN)
+                ).build();
     }
 
     /**

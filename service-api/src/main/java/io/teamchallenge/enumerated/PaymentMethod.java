@@ -5,7 +5,7 @@ import lombok.Getter;
 @Getter
 public enum PaymentMethod {
     COURIER("To courier"),
-    AFTER_CHECKIN("Payment after checking");
+    AFTER_CHECKING("Payment after checking");
 
 
     private String title;

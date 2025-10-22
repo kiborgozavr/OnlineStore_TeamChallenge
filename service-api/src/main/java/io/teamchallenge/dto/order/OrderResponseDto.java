@@ -2,7 +2,9 @@ package io.teamchallenge.dto.order;
 
 import io.teamchallenge.dto.address.AddressDto;
 import io.teamchallenge.dto.user.UserVO;
+import io.teamchallenge.enumerated.DeliveryMethod;
 import io.teamchallenge.enumerated.DeliveryStatus;
+import io.teamchallenge.enumerated.PaymentMethod;
 import lombok.*;
 
 import java.math.BigDecimal;
@@ -23,9 +25,9 @@ public class OrderResponseDto {
 
     private List<OrderItemResponseDto> orderItems;
 
-    private String paymentMethod;
+    private PaymentMethod paymentMethod;
     private Boolean isPaid;
-    private String deliveryMethod;
+    private DeliveryMethod deliveryMethod;
     private DeliveryStatus deliveryStatus;
 
     private String comment;

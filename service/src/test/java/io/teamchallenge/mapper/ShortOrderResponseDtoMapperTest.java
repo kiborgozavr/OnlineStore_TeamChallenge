@@ -35,7 +35,7 @@ public class ShortOrderResponseDtoMapperTest {
             .email(source.getContactInfo().getEmail())
             .fullName(source.getContactInfo().getFullName())
             .phoneNumber(source.getContactInfo().getPhoneNumber())
-            .deliveryMethod(source.getDeliveryMethod().getTitle())
+            .deliveryMethod(source.getDeliveryMethod())
             .deliveryStatus(source.getDeliveryStatus())
             .isPaid(source.getIsPaid())
             .createdAt(source.getCreatedAt())
