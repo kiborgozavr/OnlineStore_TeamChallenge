@@ -56,11 +56,13 @@ public class AccessTokenJwtAuthenticationFilter extends OncePerRequestFilter {
                 String email = claims.getSubject();
                 String role = (String) claims.get("role");
                 log.info("user: {}", claims);
+                log.info("Role from token: {}", role);
 
                 ClaimsUsernamePasswordAuthenticationToken
                     authentication = new ClaimsUsernamePasswordAuthenticationToken(email, "",
                     Collections.singleton(new SimpleGrantedAuthority(role)), claims);
                 SecurityContextHolder.getContext().setAuthentication(authentication);
+
             }
         } catch (ExpiredJwtException e) {
             log.error("Token has expired: " + token);
