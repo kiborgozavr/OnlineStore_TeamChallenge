@@ -51,6 +51,18 @@ public class OrderService {
     public Long create(OrderRequestDto orderRequestDto, Principal userPrincipal) {
         Order order = createOrderSample(orderRequestDto);
 
+        PaymentMethod paymentMethod = PaymentMethod.mapPaymentMethodByTitle(orderRequestDto.getPaymentMethod());
+        if (paymentMethod == null) {
+            throw new IllegalArgumentException("Unknown payment method: " + orderRequestDto.getPaymentMethod());
+        }
+        order.setPaymentMethod(paymentMethod);
+
+        DeliveryMethod deliveryMethod = DeliveryMethod.mapDeliveryMethodByTitle(orderRequestDto.getDeliveryMethod());
+        if (deliveryMethod == null){
+            throw new IllegalArgumentException("Unknown deliveryMethod method: " + orderRequestDto.getPaymentMethod());
+        }
+        order.setDeliveryMethod(deliveryMethod);
+
         if (userPrincipal == null) {
             if (userRepository.existsByEmail(orderRequestDto.getEmail())) {
                 throw new ForbiddenException(USER_WITH_EMAIL_ALREADY_EXISTS.formatted(orderRequestDto.getEmail()));
@@ -85,6 +97,7 @@ public class OrderService {
         orderRequestDto.getCartItems().stream().map(cartItem -> {
             Product product = getProductByCartItem(cartItem, products);
             product.setQuantity(product.getQuantity() - cartItem.getQuantity());
+            productRepository.save(product);
             return buildOrderItem(cartItem, savedOrder, product);
         }).forEach(order::addOrderItem);
         return savedOrder.getId();
@@ -124,8 +137,8 @@ public class OrderService {
                 .fullName(orderRequestDto.getFullName())
                 .build());
         order.setAddress(modelMapper.map(orderRequestDto.getAddress(), Address.class));
-        order.setPaymentMethod(orderRequestDto.getPaymentMethod());
-        order.setDeliveryMethod(orderRequestDto.getDeliveryMethod());
+        order.setPaymentMethod(PaymentMethod.mapPaymentMethodByTitle(orderRequestDto.getPaymentMethod()));
+        order.setDeliveryMethod(DeliveryMethod.mapDeliveryMethodByTitle(orderRequestDto.getDeliveryMethod()));
         order.setDeliveryStatus(orderRequestDto.getDeliveryStatus());
 
         order.setComment(orderRequestDto.getComment());
@@ -228,9 +241,9 @@ public class OrderService {
                         .phoneNumber(orderRequestDto.getPhoneNumber())
                         .build())
 
-                .paymentMethod(orderRequestDto.getPaymentMethod())
+                .paymentMethod(PaymentMethod.mapPaymentMethodByTitle(orderRequestDto.getPaymentMethod()))
                 .isPaid(false)
-                .deliveryMethod(orderRequestDto.getDeliveryMethod())
+                .deliveryMethod(DeliveryMethod.mapDeliveryMethodByTitle(orderRequestDto.getDeliveryMethod()))
                 .deliveryStatus(DeliveryStatus.ORDER)
 
                 .orderItems(new ArrayList<>())

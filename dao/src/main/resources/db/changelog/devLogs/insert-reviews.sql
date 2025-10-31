@@ -1,3 +1,5 @@
+-- liquibase formatted sql
+-- changeset Kate Volianiuk:insert-reviews
 insert into reviews(user_id, product_id, text, rate, created_at)
 values
 --2023

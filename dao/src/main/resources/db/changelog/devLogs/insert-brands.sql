@@ -1,4 +1,5 @@
 -- liquibase formatted sql
+-- changeset Kate Volianiuk:insert-brands
 insert into brands (id, name)
 values
     (1, 'Apple'),

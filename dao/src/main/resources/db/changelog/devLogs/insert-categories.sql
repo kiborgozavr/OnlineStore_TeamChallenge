@@ -1,4 +1,5 @@
 -- liquibase formatted sql
+-- changeset Kate Volianiuk:insert-categories
 insert into public.categories (id, name, description)
 values
     (1, 'Cellphones', 'Phones category'),

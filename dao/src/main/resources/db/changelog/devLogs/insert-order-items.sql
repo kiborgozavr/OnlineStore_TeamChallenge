@@ -1,3 +1,5 @@
+-- liquibase formatted sql
+-- changeset Kate Volianiuk:insert-order-items
 insert into order_items(order_id, product_id, quantity, price)
     values
     (10000, 1, 1, 1000),

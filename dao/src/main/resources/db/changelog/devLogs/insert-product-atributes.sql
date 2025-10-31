@@ -1,4 +1,5 @@
 -- liquibase formatted sql
+-- changeset Kate Volianiuk:insert-product-atributes
 insert into product_attributes (id, product_id, attribute_value_id)
 values
     -- Apple iPhone 15 Pro Max

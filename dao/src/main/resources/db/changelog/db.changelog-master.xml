@@ -4,52 +4,68 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
-    <include file="/db/changelog/logs/add-table-categories.xml" relativeToChangelogFile="false" />
-    <include file="/db/changelog/logs/add-table-products.xml" relativeToChangelogFile="false" />
-    <include file="/db/changelog/logs/add-table-images.xml" relativeToChangelogFile="false" />
-    <include file="/db/changelog/logs/add-table-users.xml" relativeToChangelogFile="false" />
-    <include file="/db/changelog/logs/add-table-countries.xml" relativeToChangelogFile="false" />
-    <include file="/db/changelog/logs/insert_into_countries.xml" relativeToChangelogFile="false" />
-    <include file="/db/changelog/logs/add-table-addresses.xml" relativeToChangelogFile="false" />
-    <include file="/db/changelog/logs/add-table-orders.xml" relativeToChangelogFile="false" />
-    <include file="/db/changelog/logs/add-table-order_items.xml" relativeToChangelogFile="false" />
-    <include file="/db/changelog/logs/add-table-cart_items.xml" relativeToChangelogFile="false" />
-    <include file="/db/changelog/logs/add-column-refresh-token-key-for-users-table.xml" relativeToChangelogFile="false" />
-    <include file="/db/changelog/logs/add-table-attributes.xml" relativeToChangelogFile="false" />
-    <include file="/db/changelog/logs/add-table-category-attributes.xml" relativeToChangelogFile="false" />
-    <include file="/db/changelog/logs/add-table-brands.xml" relativeToChangelogFile="false" />
-    <include file="/db/changelog/logs/change-table-products.xml" relativeToChangelogFile="false" />
-    <include file="/db/changelog/logs/add-table-attribute_values.xml" relativeToChangelogFile="false" />
-    <include file="/db/changelog/logs/add-table-product_attributes.xml" relativeToChangelogFile="false" />
-    <include file="/db/changelog/logs/change-table-products-remove-characteristics.xml" relativeToChangelogFile="false" />
-    <include file="/db/changelog/logs/change-table-products-rename-desc.xml" relativeToChangelogFile="false" />
-    <include file="/db/changelog/logs/change-table-images-drop-constraint-name.xml" relativeToChangelogFile="false" />
-    <include file="/db/changelog/logs/change-table-categories-rename-desc.xml" relativeToChangelogFile="false"/>
-    <include file="/db/changelog/logs/change-table-addresses.xml" relativeToChangelogFile="false"/>
-    <include file="/db/changelog/logs/add-table-users_orders.xml" relativeToChangelogFile="false"/>
-    <include file="/db/changelog/logs/change-table-users.xml" relativeToChangelogFile="false"/>
-    <include file="/db/changelog/logs/add-table-post_addresses.xml" relativeToChangelogFile="false"/>
-    <include file="/db/changelog/logs/change-table-orders.xml" relativeToChangelogFile="false"/>
-    <include file="/db/changelog/logs/change-table-order-items.xml" relativeToChangelogFile="false"/>
-    <include file="/db/changelog/logs/change-table-orders-drop-columns.xml" relativeToChangelogFile="false"/>
-    <include file="/db/changelog/logs/change-table-images-add-order.xml" relativeToChangelogFile="false"/>
-    <include file="/db/changelog/logs/change-table-attribute_values-add-unique.xml" relativeToChangelogFile="false"/>
-    <include file="/db/changelog/logs/add-table-reviews.xml" relativeToChangelogFile="false"/>
-    <include file="/db/changelog/logs/add-index-order-items-on-product-id.xml" relativeToChangelogFile="false"/>
-    <include file="/db/changelog/logs/add-index-products-on-quantity.xml" relativeToChangelogFile="false"/>
-    <include file="db/changelog/logs/12-01-changelog.xml"/>
-    <include file="db/changelog/logs/change-orderId-start-value.xml"/>
-    <include file="db/changelog/logs/add-columns-user.xml" relativeToChangelogFile="false" />
-    <include file="db/changelog/logs/add-column-fullname-for-user.xml" relativeToChangelogFile="false" />
-    <include file="db/changelog/logs/drop-users-first-last-name.xml" relativeToChangelogFile="false" />
-    <include file="db/changelog/logs/products-add-column-code.xml" relativeToChangelogFile="false" />
-    <include file="db/changelog/logs/create-table-wishlist.xml" relativeToChangelogFile="false" />
-    <include file="db/changelog/logs/add_reset_password_token_column_for_users.xml" relativeToChangelogFile="false" />
-    <include file="db/changelog/logs/add-table-alternative-products.xml" relativeToChangelogFile="false" />
-    <include file="db/changelog/logs/add-column-alternative-attribute-value-to-alternative-product.xml" relativeToChangelogFile="false" />
-    <include file="db/changelog/logs/add-column-comment-to-order.xml" relativeToChangelogFile="false" />
-    <include file="db/changelog/logs/add-columns-to-address.xml" relativeToChangelogFile="false" />
-    <include file="db/changelog/logs/add-column-color-to-products.xml" relativeToChangelogFile="false" />
-    <include file="db/changelog/logs/change-table-reviews-make-text-nullable.xml" relativeToChangelogFile="false" />
-    <include file="db/changelog/logs/add-table-password-reset-token.xml" relativeToChangelogFile="false"/>
-   </databaseChangeLog>
+    <include file="logs/add-table-categories.xml" relativeToChangelogFile="true"/>
+    <include file="logs/add-table-products.xml" relativeToChangelogFile="true"/>
+    <include file="logs/add-table-images.xml" relativeToChangelogFile="true"/>
+    <include file="logs/add-table-users.xml" relativeToChangelogFile="true"/>
+    <include file="logs/add-table-countries.xml" relativeToChangelogFile="true"/>
+    <include file="logs/insert_into_countries.xml" relativeToChangelogFile="true"/>
+    <include file="logs/add-table-addresses.xml" relativeToChangelogFile="true"/>
+    <include file="logs/add-table-orders.xml" relativeToChangelogFile="true"/>
+    <include file="logs/add-table-order_items.xml" relativeToChangelogFile="true"/>
+    <include file="logs/add-table-cart_items.xml" relativeToChangelogFile="true"/>
+    <include file="logs/add-column-refresh-token-key-for-users-table.xml" relativeToChangelogFile="true"/>
+    <include file="logs/add-table-attributes.xml" relativeToChangelogFile="true"/>
+    <include file="logs/add-table-category-attributes.xml" relativeToChangelogFile="true"/>
+    <include file="logs/add-table-brands.xml" relativeToChangelogFile="true"/>
+    <include file="logs/change-table-products.xml" relativeToChangelogFile="true"/>
+    <include file="logs/add-table-attribute_values.xml" relativeToChangelogFile="true"/>
+    <include file="logs/add-table-product_attributes.xml" relativeToChangelogFile="true"/>
+    <include file="logs/change-table-products-remove-characteristics.xml" relativeToChangelogFile="true"/>
+    <include file="logs/change-table-products-rename-desc.xml" relativeToChangelogFile="true"/>
+    <include file="logs/change-table-images-drop-constraint-name.xml" relativeToChangelogFile="true"/>
+    <include file="logs/change-table-categories-rename-desc.xml" relativeToChangelogFile="true"/>
+    <include file="logs/change-table-addresses.xml" relativeToChangelogFile="true"/>
+    <include file="logs/add-table-users_orders.xml" relativeToChangelogFile="true"/>
+    <include file="logs/change-table-users.xml" relativeToChangelogFile="true"/>
+    <include file="logs/add-table-post_addresses.xml" relativeToChangelogFile="true"/>
+    <include file="logs/change-table-orders.xml" relativeToChangelogFile="true"/>
+    <include file="logs/change-table-order-items.xml" relativeToChangelogFile="true"/>
+    <include file="logs/change-table-orders-drop-columns.xml" relativeToChangelogFile="true"/>
+    <include file="logs/change-table-images-add-order.xml" relativeToChangelogFile="true"/>
+    <include file="logs/change-table-attribute_values-add-unique.xml" relativeToChangelogFile="true"/>
+    <include file="logs/add-table-reviews.xml" relativeToChangelogFile="true"/>
+    <include file="logs/add-index-order-items-on-product-id.xml" relativeToChangelogFile="true"/>
+    <include file="logs/add-index-products-on-quantity.xml" relativeToChangelogFile="true"/>
+    <include file="logs/12-01-changelog.xml" relativeToChangelogFile="true"/>
+    <include file="logs/change-orderId-start-value.xml" relativeToChangelogFile="true"/>
+    <include file="logs/add-columns-user.xml" relativeToChangelogFile="true"/>
+    <include file="logs/add-column-fullname-for-user.xml" relativeToChangelogFile="true"/>
+    <include file="logs/drop-users-first-last-name.xml" relativeToChangelogFile="true"/>
+    <include file="logs/products-add-column-code.xml" relativeToChangelogFile="true"/>
+    <include file="logs/create-table-wishlist.xml" relativeToChangelogFile="true"/>
+    <include file="logs/add_reset_password_token_column_for_users.xml" relativeToChangelogFile="true"/>
+    <include file="logs/add-table-alternative-products.xml" relativeToChangelogFile="true"/>
+    <include file="logs/add-column-alternative-attribute-value-to-alternative-product.xml"
+             relativeToChangelogFile="true"/>
+    <include file="logs/add-column-comment-to-order.xml" relativeToChangelogFile="true"/>
+    <include file="logs/add-columns-to-address.xml" relativeToChangelogFile="true"/>
+    <include file="logs/add-column-color-to-products.xml" relativeToChangelogFile="true"/>
+    <include file="logs/change-table-reviews-make-text-nullable.xml" relativeToChangelogFile="true"/>
+    <include file="logs/add-table-password-reset-token.xml" relativeToChangelogFile="true"/>
+    <include file="logs/add-column-paymentmethod-to-orders.xml" relativeToChangelogFile="true"/>
+    <include file="devLogs/insert-brands.sql" relativeToChangelogFile="true"/>
+    <include file="devLogs/insert-attributes.sql" relativeToChangelogFile="true"/>
+    <include file="devLogs/insert-categories.sql" relativeToChangelogFile="true"/>
+    <include file="devLogs/insert-products.sql" relativeToChangelogFile="true"/>
+    <include file="devLogs/insert-attribute-values.sql" relativeToChangelogFile="true"/>
+    <include file="devLogs/insert-images.sql" relativeToChangelogFile="true"/>
+    <include file="devLogs/insert-product-atributes.sql" relativeToChangelogFile="true"/>
+    <include file="devLogs/insert-alternative-products.sql" relativeToChangelogFile="true"/>
+    <include file="devLogs/insert-addresses.sql" relativeToChangelogFile="true"/>
+    <include file="devLogs/insert-users.sql" relativeToChangelogFile="true"/>
+    <include file="devLogs/insert-orders.sql" relativeToChangelogFile="true"/>
+    <include file="devLogs/insert-order-items.sql" relativeToChangelogFile="true"/>
+    <include file="devLogs/insert-user-orders.sql" relativeToChangelogFile="true"/>
+    <include file="devLogs/insert-reviews.sql" relativeToChangelogFile="true"/>
+</databaseChangeLog>

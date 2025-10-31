@@ -2,8 +2,6 @@ package io.teamchallenge.dto.order;
 
 import io.teamchallenge.dto.address.AddressDto;
 import io.teamchallenge.dto.cart.CartItemRequestDto;
-import io.teamchallenge.enumerated.DeliveryMethod;
-import io.teamchallenge.enumerated.PaymentMethod;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -16,7 +14,6 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-
 public class OrderRequestDto {
     @NotBlank
     private String fullName;
@@ -33,10 +30,10 @@ public class OrderRequestDto {
     private List<CartItemRequestDto> cartItems;
 
     @NotNull
-    private PaymentMethod paymentMethod;
+    private String paymentMethod;
 
     @NotNull
-    private DeliveryMethod deliveryMethod;
+    private String deliveryMethod;
 
     @NotNull
     private AddressDto address;

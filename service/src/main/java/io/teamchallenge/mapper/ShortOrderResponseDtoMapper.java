@@ -23,9 +23,9 @@ public class ShortOrderResponseDtoMapper extends AbstractConverter<Order, ShortO
                 .email(source.getContactInfo().getEmail())
                 .phoneNumber(source.getContactInfo().getPhoneNumber())
 
-                .paymentMethod(source.getPaymentMethod())
+                .paymentMethod(source.getPaymentMethod().getTitle())
                 .isPaid(source.getIsPaid())
-                .deliveryMethod(source.getDeliveryMethod())
+                .deliveryMethod(source.getDeliveryMethod().getTitle())
                 .deliveryStatus(source.getDeliveryStatus())
 
                 .createdAt(source.getCreatedAt())

@@ -1,3 +1,5 @@
+-- liquibase formatted sql
+-- changeset Kate Volianiuk:insert-user-orders
 insert into users_orders(user_id, order_id)
     values
     (3, 10000),

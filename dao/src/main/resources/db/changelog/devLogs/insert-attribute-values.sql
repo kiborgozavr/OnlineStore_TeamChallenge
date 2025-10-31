@@ -1,4 +1,5 @@
 -- liquibase formatted sql
+-- changeset Kate Volianiuk:insert-attribute-values
 insert into public.attribute_values (id, attribute_id, value)
 values
     -- Memory ROM

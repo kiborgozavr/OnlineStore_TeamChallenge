@@ -1,4 +1,5 @@
 -- liquibase formatted sql
+-- changeset Kate Volianiuk:insert-images
 insert into images (id, product_id, link, image_order)
 values
     (1, 1, 'https://res.cloudinary.com/dpnzbwijt/image/upload/v1736303496/onlinestore/aalgi4a27q7p1ozp1x5o.avif', 1),

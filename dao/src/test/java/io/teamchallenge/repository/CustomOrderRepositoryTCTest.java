@@ -45,7 +45,7 @@ public class CustomOrderRepositoryTCTest {
         OrderFilterDto orderFilterDto = OrderFilterDto.builder().isPaid(true)
             .createdAfter(LocalDateTime.of(2020,1,1,1,1))
             .createdBefore(LocalDateTime.of(2026,1,1,1,1))
-            .deliveryMethods(List.of(NOVA))
+            .deliveryMethods(List.of(NOVA.getTitle()))
             .statuses(List.of(PAID))
             .totalLess(BigDecimal.valueOf(2000))
             .totalMore(BigDecimal.ZERO)

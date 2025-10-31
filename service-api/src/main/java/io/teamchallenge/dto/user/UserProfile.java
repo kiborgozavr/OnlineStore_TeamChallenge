@@ -1,7 +1,6 @@
 package io.teamchallenge.dto.user;
 
 import io.teamchallenge.dto.address.AddressDto;
-import io.teamchallenge.dto.order.OrderRequestDto;
 import io.teamchallenge.dto.order.OrderResponseDto;
 import io.teamchallenge.enumerated.Role;
 import io.teamchallenge.enumerated.Sex;

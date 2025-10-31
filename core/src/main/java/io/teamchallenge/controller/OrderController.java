@@ -3,11 +3,7 @@ package io.teamchallenge.controller;
 import io.teamchallenge.annotation.AllowedSortFields;
 import io.teamchallenge.annotation.CurrentUserId;
 import io.teamchallenge.annotation.ValidOrderRequest;
-import io.teamchallenge.dto.order.OrderRequestDto;
-import io.teamchallenge.dto.order.OrderResponseDto;
-import io.teamchallenge.dto.order.OrderFilterDto;
-import io.teamchallenge.dto.order.OrderUpdateRequestDto;
-import io.teamchallenge.dto.order.ShortOrderResponseDto;
+import io.teamchallenge.dto.order.*;
 import io.teamchallenge.dto.pageable.PageableDto;
 import io.teamchallenge.enumerated.DeliveryStatus;
 import io.teamchallenge.service.impl.OrderService;
@@ -42,7 +38,7 @@ public class OrderController {
      * @return a {@link ResponseEntity} containing the ID of the newly created order and  HTTP status {@code CREATED}.
      */
     @PostMapping
-    public ResponseEntity<Long> create(@RequestBody @ValidOrderRequest OrderRequestDto orderRequestDto,
+    public ResponseEntity<Long> create(@RequestBody @Valid @ValidOrderRequest OrderRequestDto orderRequestDto,
                                        Principal userPrincipal) {
         return ResponseEntity.status(HttpStatus.CREATED).body(orderService.create(orderRequestDto, userPrincipal));
     }
@@ -71,7 +67,7 @@ public class OrderController {
     public ResponseEntity<Void> changeOrderDetails(@PathVariable Long orderId,
                                                    @RequestBody OrderUpdateRequestDto orderRequestDto) {
         orderService.changeOrderDetails(orderId, orderRequestDto);
-        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build(); //TODO: is it ok 204 or need 200?
     }
 
     /**
@@ -97,7 +93,7 @@ public class OrderController {
     @PatchMapping("/cancel/{orderId}")
     public ResponseEntity<Void> cancelOrder(@PathVariable Long orderId, @CurrentUserId Long userId) {
         orderService.cancelOrder(orderId, userId);
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+        return ResponseEntity.status(HttpStatus.CREATED).build();//TODO: is it ok 201
     }
 
     /**

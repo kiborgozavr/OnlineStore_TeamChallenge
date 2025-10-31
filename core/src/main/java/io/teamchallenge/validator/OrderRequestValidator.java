@@ -10,15 +10,17 @@ public class OrderRequestValidator implements ConstraintValidator<ValidOrderRequ
     /**
      * Validates the delivery method and addresses in an {@link OrderRequestDto}.
      *
-     * @param value   the {@code OrderRequestDto} object to validate.
+     * @param dto   the {@code OrderRequestDto} object to validate.
      * @param context the context in which the constraint is evaluated.
      * @return {@code true} if the delivery method is valid, {@code false} otherwise.
      */
     @Override
-    public boolean isValid(OrderRequestDto value, ConstraintValidatorContext context) {
-        return  (value.getDeliveryMethod().equals(DeliveryMethod.COURIER) && isAddressForCourierValid(value))
-                || ((value.getDeliveryMethod().equals(DeliveryMethod.NOVA)
-                || value.getDeliveryMethod().equals(DeliveryMethod.UKRPOSHTA)) && isAddressForPostValid(value));
+    public boolean isValid(OrderRequestDto dto, ConstraintValidatorContext context) {
+
+        DeliveryMethod deliveryMethod = DeliveryMethod.mapDeliveryMethodByTitle(dto.getDeliveryMethod());
+        return  (deliveryMethod.equals(DeliveryMethod.COURIER) && isAddressForCourierValid(dto))
+                || ((deliveryMethod.equals(DeliveryMethod.NOVA) && isAddressForPostValid(dto))
+                || deliveryMethod.equals(DeliveryMethod.UKRPOSHTA)) && isAddressForPostValid(dto);
     }
 
     private boolean isAddressForCourierValid(OrderRequestDto value) {

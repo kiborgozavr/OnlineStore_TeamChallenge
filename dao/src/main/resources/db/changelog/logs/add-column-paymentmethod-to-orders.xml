@@ -4,16 +4,12 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                    https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
-    <changeSet id="change-table-order-items" author="Denys Liubchenko">
-        <addColumn tableName="order_items">
-            <column name="price" type="decimal(10,2)">
+    <changeSet id="add-column-paymentmetod-to-orders" author="Kate Volianiuk">
+        <addColumn tableName="orders">
+            <column name="payment_method" type="varchar(50)">
                 <constraints nullable="false"/>
             </column>
         </addColumn>
-        <dropColumn tableName="order_items">
-            <column name="id"/>
-        </dropColumn>
-
-        <addPrimaryKey tableName="order_items" columnNames="order_id,product_id" constraintName="PK_order_items"/>
     </changeSet>
+
 </databaseChangeLog>

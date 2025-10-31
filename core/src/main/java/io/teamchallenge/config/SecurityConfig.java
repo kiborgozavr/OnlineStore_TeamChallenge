@@ -89,13 +89,6 @@ public class SecurityConfig {
                         .accessDeniedHandler((req, resp, exc) ->
                                 resp.sendError(SC_FORBIDDEN, "You don't have authorities.")))
                 .authorizeHttpRequests(req -> req
-                        .requestMatchers(HttpMethod.POST,
-                                API_V1 + "/signUp",
-                                API_V1 + "/signIn",
-                                API_V1 + "/updateAccessToken",
-                                API_V1 + "/orders"
-                        )
-                        .permitAll()
                         .requestMatchers(HttpMethod.OPTIONS, "/**")
                         .permitAll()
                         .requestMatchers(
@@ -107,6 +100,9 @@ public class SecurityConfig {
                                 "/swagger-resources/**",
                                 "/webjars/**")
                         .permitAll()
+
+
+
                         .requestMatchers(HttpMethod.GET,
                                 API_V1 + "/categories/{id}/attribute-attributeValues",
                                 API_V1 + "/categories/{id}/attribute-attributeValues",
@@ -120,34 +116,27 @@ public class SecurityConfig {
                                 API_V1 + "/change-password"
                         )
                         .permitAll()
-                        .requestMatchers(HttpMethod.POST,
-                                API_V1 + "/reset-password",
-                                API_V1 + "/change-password"
-                        )
-                        .permitAll()
                         .requestMatchers(HttpMethod.GET,
                                 API_V1 + "/cart-items",
-                                API_V1 + "/orders/**",
+                                API_V1 + "/orders/{orderId}",
+                                API_V1 + "/orders",
                                 API_V1 + "/users/profile",
                                 API_V1 + "/favorite-products"
                         )
                         .hasAnyRole(USER, ADMIN)
-                        .requestMatchers(HttpMethod.PUT,
-                                API_V1 + "/users/profile",
-                                API_V1 + "/orders/**"
-                        ).hasAnyRole(USER, ADMIN)
+
+
+
                         .requestMatchers(HttpMethod.POST,
-                                API_V1 + "/cart-items/{product_id}",
-                                API_V1 + "/reviews/{productId}",
-                                API_V1 + "/favorite-products/{productId}"
+                                API_V1 + "/signUp",
+                                API_V1 + "/signIn",
+                                API_V1 + "/updateAccessToken",
+                                API_V1 + "/orders",
+                                API_V1 + "/reset-password",
+                                API_V1 + "/change-password"
                         )
-                        .hasAnyRole(USER, ADMIN)
-                        .requestMatchers(HttpMethod.PATCH,
-                                API_V1 + "/cart-items/{product_id}",
-                                API_V1 + "/orders/cancel/{orderId}"
-                        )
-                        .hasAnyRole(USER, ADMIN)
-                        .requestMatchers(HttpMethod.DELETE,
+                        .permitAll()
+                        .requestMatchers(HttpMethod.POST,
                                 API_V1 + "/cart-items/{product_id}",
                                 API_V1 + "/reviews/{productId}",
                                 API_V1 + "/favorite-products/{productId}"
@@ -159,10 +148,38 @@ public class SecurityConfig {
                                 API_V1 + "/attributes",
                                 API_V1 + "/users/profile")
                         .hasRole(ADMIN)
+
+
+
+                        .requestMatchers(HttpMethod.PUT,
+                                API_V1 + "/users/profile",
+                                API_V1 + "/orders/{orderId}"
+                        ).hasAnyRole(USER, ADMIN)
+
+
+
+
+                        .requestMatchers(HttpMethod.PATCH,
+                                API_V1 + "/cart-items/{product_id}",
+                                API_V1 + "/orders/cancel/{orderId}"
+                        )
+                        .hasAnyRole(USER, ADMIN)
+
+
+
+                        .requestMatchers(HttpMethod.DELETE,
+                                API_V1 + "/cart-items/{product_id}",
+                                API_V1 + "/reviews/{productId}",
+                                API_V1 + "/favorite-products/{productId}"
+                        )
+                        .hasAnyRole(USER, ADMIN)
                         .requestMatchers(HttpMethod.DELETE,
                                 API_V1 + "/reviews/{productId}/{userId}"
                         )
                         .hasRole(ADMIN)
+
+
+
                         .anyRequest()
                         .hasAnyRole(ADMIN)
                 ).build();

@@ -168,6 +168,7 @@ public class CustomOrderRepositoryImpl implements CustomOrderRepository {
         if (filterParametersDto.getStatuses() != null && !filterParametersDto.getStatuses().isEmpty()) {
             predicates.add(root.get("deliveryStatus").in(filterParametersDto.getStatuses().toArray()));
         }
+
         if (filterParametersDto.getCreatedBefore() != null) {
             predicates.add(cb.lessThanOrEqualTo(root.get("createdAt"), filterParametersDto.getCreatedBefore()));
         }

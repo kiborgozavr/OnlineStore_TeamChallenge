@@ -1,4 +1,5 @@
 -- liquibase formatted sql
+-- changeset Kate Volianiuk:insert-products
 insert into products (id, short_desc, category_id, name, description, price, quantity, created_at, brand_id, code, color)
 values (1, 'Apple iPhone 15 Pro Max 256Gb Natural Titanium', 1, 'Apple iPhone 15 Pro Max 256Gb Natural Titanium', 'Apple iPhone 15 Pro Max 256Gb Natural Titanium', 1000, 100, '2021-01-01', 1, '111111', 'GREY'),
        (2, 'Samsung Galaxy A24 6/128Gb Black', 1, 'Samsung Galaxy A24 6/128Gb Black', 'Samsung Galaxy A24 6/128Gb Black', 1100, 100, '2021-01-01', 2, '222222', 'BLACK'),

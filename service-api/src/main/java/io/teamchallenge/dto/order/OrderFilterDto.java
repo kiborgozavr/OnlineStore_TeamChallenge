@@ -1,8 +1,6 @@
 package io.teamchallenge.dto.order;
 
-import io.teamchallenge.enumerated.DeliveryMethod;
 import io.teamchallenge.enumerated.DeliveryStatus;
-import io.teamchallenge.enumerated.PaymentMethod;
 import jakarta.validation.constraints.Min;
 
 import java.math.BigDecimal;
@@ -18,9 +16,9 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Builder
 
 public class OrderFilterDto {
-    private List<PaymentMethod> paymentMethods;
+    private List<String> paymentMethods;
     private Boolean isPaid;
-    private List<DeliveryMethod> deliveryMethods;
+    private List<String> deliveryMethods;
     private List<DeliveryStatus> statuses;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)

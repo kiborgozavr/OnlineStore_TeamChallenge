@@ -1,3 +1,5 @@
+-- liquibase formatted sql
+-- changeset Kate Volianiuk:insert-alternative-products
 insert into alternative_products(product_id, alternative_product_id, attribute_value_id, alternative_attribute_value_id)
 values
 --Apple iPhone 15 Pro Max 256Gb Natural Titanium

@@ -1,3 +1,5 @@
+-- liquibase formatted sql
+-- changeset Kate Volianiuk:insert-orders
 insert into orders(full_name, email, phone_number, address_id,
                    is_paid, payment_method, delivery_status, delivery_method, comment, created_at)
 VALUES

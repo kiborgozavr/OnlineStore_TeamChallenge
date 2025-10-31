@@ -1,3 +1,5 @@
+-- liquibase formatted sql
+-- changeset Kate Volianiuk:insert-addresses
 INSERT INTO addresses(address_line, city, street, house_number, flat_number, department_number)
 VALUES
     ('Kashtan Street, 123, 45, Kyiv', 'Kyiv', 'Kashtan Street', '123', '45', null),

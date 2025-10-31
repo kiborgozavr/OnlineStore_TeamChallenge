@@ -1,3 +1,5 @@
+-- liquibase formatted sql
+-- changeset Kate Volianiuk:insert-users
 insert into users(email, password, full_name, phone_number, role, created_at, refresh_token_key)
 values
 -- Admin test

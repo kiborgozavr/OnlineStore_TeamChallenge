@@ -1,4 +1,5 @@
 -- liquibase formatted sql
+-- changeset Kate Volianiuk:insert-attributes
 insert into public.attributes (id, name)
 values
     (1, 'Rom Memory'),
