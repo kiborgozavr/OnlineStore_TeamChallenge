@@ -11,9 +11,8 @@ import lombok.Setter;
 public class ResetPasswordDto {
 
     @Pattern(
-            regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$",
-            message = "Password must be at least 8 characters long, contain a mix of uppercase and lowercase letters, " +
-                    "include at least one numerical digit, and include at least one special character."
+            regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()\\-\\[\\]{}:;',?/*~$^+=<>])(?=\\S+$).{8,24}$",
+            message = "Password must be 8–24 characters long, contain upper and lower case Latin letters, a number, and a special character"
     )
     private String password;
 

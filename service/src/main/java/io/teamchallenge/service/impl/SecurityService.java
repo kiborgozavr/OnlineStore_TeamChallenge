@@ -23,13 +23,11 @@ import java.util.Optional;
 
 /**
  * Service class for managing security.
- *
- * @author Denys Liubchenko
  */
 @Service
 @Slf4j
-@Transactional(readOnly = true)
 public class SecurityService {
+
     private static final String NEW_PASSWORD_BASE_URL = "https://gadget-house-tc.netlify.app/change-password?token=";
 
     private final UserRepository userRepository;
@@ -67,14 +65,20 @@ public class SecurityService {
         log.info("User tries to sign up {}", signUpRequestDto);
         if (userRepository.existsByEmail(signUpRequestDto.getEmail())) {
             throw new AlreadyExistsException(
-                ExceptionMessage.USER_WITH_EMAIL_ALREADY_EXISTS.formatted(signUpRequestDto.getEmail()));
+                    ExceptionMessage.USER_WITH_EMAIL_ALREADY_EXISTS.formatted(signUpRequestDto.getEmail()));
         }
         if (userRepository.existsByPhoneNumber(signUpRequestDto.getPhoneNumber())) {
             throw new AlreadyExistsException(
-                ExceptionMessage.USER_WITH_PHONE_NUMBER_ALREADY_EXISTS.formatted(signUpRequestDto.getPhoneNumber()));
+                    ExceptionMessage.USER_WITH_PHONE_NUMBER_ALREADY_EXISTS.formatted(signUpRequestDto.getPhoneNumber()));
         }
+
         User user = modelMapper.map(signUpRequestDto, User.class);
-        return modelMapper.map(userRepository.save(user), SignUpResponseDto.class);
+        user.setRole(Role.ROLE_USER);
+        user.setPassword(passwordEncoder.encode(signUpRequestDto.getPassword()));
+        userRepository.save(user);
+        SignUpResponseDto responseDto = modelMapper.map(user, SignUpResponseDto.class);
+
+        return responseDto;
     }
 
     /**
@@ -88,17 +92,17 @@ public class SecurityService {
     public SignInResponseDto signInUser(SignInRequestDto signInRequestDto) {
         log.info("User tries to sign in {}", signInRequestDto);
         User user = userRepository.findUserByEmail(signInRequestDto.getEmail())
-            .orElseThrow(() -> new NotFoundException(
-                ExceptionMessage.USER_NOT_FOUND_BY_EMAIL.formatted(signInRequestDto.getEmail())));
+                .orElseThrow(() -> new NotFoundException(
+                        ExceptionMessage.USER_NOT_FOUND_BY_EMAIL.formatted(signInRequestDto.getEmail())));
         if (!passwordEncoder.matches(signInRequestDto.getPassword(), user.getPassword())) {
             throw new BadCredentialsException(ExceptionMessage.PASSWORD_DOES_NOT_MATCH);
         }
         String accessToken = jwtService.generateAccessToken(user.getId(), user.getEmail(), user.getRole());
         String refreshToken = jwtService.generateRefreshToken(user);
         return SignInResponseDto.builder()
-            .accessToken(accessToken)
-            .refreshToken(refreshToken)
-            .build();
+                .accessToken(accessToken)
+                .refreshToken(refreshToken)
+                .build();
     }
 
     /**
@@ -112,17 +116,17 @@ public class SecurityService {
     @Transactional
     public SignInResponseDto updateAccessToken(String refreshToken) {
         String email = jwtService.getSubjectFromToken(refreshToken)
-            .orElseThrow(() -> new BadTokenException(ExceptionMessage.TOKEN_DOES_NOT_CONTAIN_SUBJECT));
+                .orElseThrow(() -> new BadTokenException(ExceptionMessage.TOKEN_DOES_NOT_CONTAIN_SUBJECT));
         User user = userRepository.findUserByEmail(email)
-            .orElseThrow(() -> new NotFoundException(ExceptionMessage.USER_NOT_FOUND_BY_EMAIL.formatted(email)));
+                .orElseThrow(() -> new NotFoundException(ExceptionMessage.USER_NOT_FOUND_BY_EMAIL.formatted(email)));
         jwtService.verifyToken(refreshToken, user.getRefreshTokenKey());
 
         String accessToken = jwtService.generateAccessToken(user.getId(), user.getEmail(), user.getRole());
         String newRefreshToken = jwtService.generateRefreshToken(user);
         return SignInResponseDto.builder()
-            .accessToken(accessToken)
-            .refreshToken(newRefreshToken)
-            .build();
+                .accessToken(accessToken)
+                .refreshToken(newRefreshToken)
+                .build();
     }
 
     @Transactional
@@ -132,32 +136,39 @@ public class SecurityService {
         }
 
         User admin = User.builder()
-            .email(dto.getEmail())
-            .fullName(dto.getFullName())
-            .password(passwordEncoder.encode(dto.getPassword()))
-            .role(Role.ROLE_ADMIN)
-            .build();
+                .email(dto.getEmail())
+                .fullName(dto.getFullName())
+                .password(passwordEncoder.encode(dto.getPassword()))
+                .role(Role.ROLE_ADMIN)
+                .build();
 
         return modelMapper.map(userRepository.save(admin), NewAdminResponseDto.class);
     }
 
     @Transactional
     public String generateRecoveryLink(User user) {
+        log.debug("start method generateRecoveryLink in Security controller");
+
         String token = jwtService.generateTokenKey();
+        log.debug("token is generated");
+
         PasswordResetToken passwordResetToken = PasswordResetToken.builder()
-            .user(user)
-            .token(token)
-            .expiresAt(LocalDateTime.now().plusDays(1))
-            .build();
+                .user(user)
+                .token(token)
+                .expiresAt(LocalDateTime.now().plusDays(1))
+                .build();
+        log.debug("passwordResetToken is created");
+
         passwordResetTokenRepository.save(passwordResetToken);
+        log.debug("passwordResetToken is saved in passwordResetTokenRepository");
         return NEW_PASSWORD_BASE_URL + token;
     }
 
     public boolean isValidPasswordResetToken(String token) {
         Optional<PasswordResetToken> tokenOptional = passwordResetTokenRepository.findByToken(token);
         return (tokenOptional.isPresent() &&
-            !tokenOptional.get().isUsed() &&
-            tokenOptional.get().getExpiresAt().isAfter(LocalDateTime.now()));
+                !tokenOptional.get().isUsed() &&
+                tokenOptional.get().getExpiresAt().isAfter(LocalDateTime.now()));
     }
 
     @Transactional
@@ -174,8 +185,8 @@ public class SecurityService {
         String accessToken = jwtService.generateAccessToken(user.getId(), user.getEmail(), user.getRole());
         String newRefreshToken = jwtService.generateRefreshToken(user);
         return SignInResponseDto.builder()
-            .accessToken(accessToken)
-            .refreshToken(newRefreshToken)
-            .build();
+                .accessToken(accessToken)
+                .refreshToken(newRefreshToken)
+                .build();
     }
 }

@@ -6,14 +6,11 @@ import io.teamchallenge.dto.security.SignInResponseDto;
 import io.teamchallenge.dto.user.UserProfile;
 import io.teamchallenge.dto.user.UserProfilePOST;
 import io.teamchallenge.entity.Address;
-import io.teamchallenge.entity.PasswordResetToken;
 import io.teamchallenge.entity.User;
-import io.teamchallenge.exception.BadCredentialsException;
 import io.teamchallenge.exception.ConflictException;
 import io.teamchallenge.exception.NotFoundException;
 import io.teamchallenge.repository.ProductRepository;
 import io.teamchallenge.repository.UserRepository;
-import jakarta.mail.MessagingException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
@@ -44,9 +41,10 @@ public class UserService {
                 .map(user -> modelMapper.map(user, UserProfile.class))
                 .orElseThrow(() -> new NotFoundException(USER_NOT_FOUND_BY_EMAIL.formatted(email)));
     }
+
     @Transactional
     public UserProfile updateUserProfile(Long id, UserProfile userProfile) {
-        // Check if email is already taken by another user
+        // TODO Check if email is already taken by another user
         User user = userRepository.findById(id).orElseThrow(() -> new NotFoundException(USER_NOT_FOUND_BY_ID.formatted(id)));
         if (userRepository.existsOtherUserWithThisEmail(id, userProfile.getEmail()))
             throw new ConflictException("User with email " + userProfile.getEmail() + " already exists");
@@ -67,6 +65,7 @@ public class UserService {
         userRepository.save(user);
         return getUserProfile(userProfile.getEmail());
     }
+
     @Transactional
     public UserProfile createUserProfile(String email, UserProfilePOST userProfile) {
         if (userRepository.existsByEmail(userProfile.getEmail())) {
@@ -83,6 +82,7 @@ public class UserService {
     public Optional<User> getUser(String name) {
         return userRepository.findUserByEmail(name);
     }
+
     @Transactional
     public void addProductToWishlist(String name, Long productId) {
         User user = userRepository.findUserByEmail(name)
@@ -91,6 +91,7 @@ public class UserService {
                 .orElseThrow(() -> new ConflictException("Product with id " + productId + " not found")));
         userRepository.save(user);
     }
+
     @Transactional
     public void removeProductFromWishlist(String name, Long productId) {
         User user = userRepository.findUserByEmail(name)
@@ -100,11 +101,18 @@ public class UserService {
         userRepository.save(user);
     }
 
-    public void sendPasswordResetEmail(User user) throws MessagingException {
+    public void sendPasswordResetEmail(User user) {
+        log.debug("start method sendPasswordResetEmail from user service");
+
         User savedUser = userRepository.findById(user.getId())
                 .orElseThrow(() -> new NotFoundException("User not found"));
+        log.debug("user is found");
+
         String recoveryLink = securityService.generateRecoveryLink(user);
+        log.debug("recovery link is generated");
+
         mailService.sendResetPasswordEmail(savedUser.getEmail(), recoveryLink);
+        log.debug("method sendPasswordResetEmail from user service completed");
     }
 
     @Transactional

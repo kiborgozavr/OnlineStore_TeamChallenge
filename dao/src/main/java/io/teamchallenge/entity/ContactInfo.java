@@ -5,14 +5,12 @@ import jakarta.persistence.Embeddable;
 import lombok.*;
 
 @Embeddable
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@ToString
-@EqualsAndHashCode
 public class ContactInfo {
+
     @Column(name = "full_name", nullable = false)
     private String fullName;
 

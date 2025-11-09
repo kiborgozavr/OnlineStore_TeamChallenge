@@ -4,10 +4,10 @@ import io.teamchallenge.dto.security.*;
 import io.teamchallenge.entity.User;
 import io.teamchallenge.service.impl.SecurityService;
 import io.teamchallenge.service.impl.UserService;
-import jakarta.mail.MessagingException;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +21,7 @@ import static org.springframework.http.HttpStatus.OK;
  * Controller for security.
  * @author Denys Liubchenko
  */
+@Slf4j
 @RestController
 @RequestMapping("/api/v1")
 @Validated
@@ -63,18 +64,26 @@ public class SecurityController {
     }
 
     @PostMapping("/reset-password")
-    public ResponseEntity<?> sendLinkForPasswordReset(@RequestParam("email") String email) throws MessagingException {
+    public ResponseEntity<?> sendLinkForPasswordReset(@RequestParam("email") String email){
+        log.debug("start reset-password endpoint");
+
         Optional<User> user = userService.getUser(email);
         if (user.isEmpty()) {
+            log.debug("user is null");
             return ResponseEntity.badRequest().body("Unknown user");
         } else {
+            log.debug("user is not null");
+
             userService.sendPasswordResetEmail(user.get());
+            log.debug("userService.sendPasswordResetEmail(user.get()) is finished");
             return ResponseEntity.accepted().body("Email with restoring link was sent");
         }
     }
 
     @GetMapping("/change-password")
     public ResponseEntity<?> validatePasswordResetToken(@RequestParam("token") String passwordResetToken) {
+        log.debug("start change-password endpoint");
+
         if (securityService.isValidPasswordResetToken(passwordResetToken)) {
             return ResponseEntity.ok().build();
         }

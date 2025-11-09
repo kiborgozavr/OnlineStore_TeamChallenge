@@ -1,46 +1,69 @@
 package io.teamchallenge.service.impl;
 
-import jakarta.mail.MessagingException;
-import jakarta.mail.internet.MimeMessage;
-import lombok.RequiredArgsConstructor;
+import com.resend.Resend;
+import com.resend.services.emails.model.CreateEmailOptions;
+import com.resend.services.emails.model.CreateEmailResponse;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.MessageSource;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.thymeleaf.context.Context;
 import org.thymeleaf.spring6.SpringTemplateEngine;
 
+@Slf4j
 @Service
-@RequiredArgsConstructor
 public class MailService {
 
-    private final String NEW_PASSWORD_SUBJECT = "Your GadgetHouse password reset request from GadgetHouse";
+    private static final String NEW_PASSWORD_SUBJECT = "Your GadgetHouse password reset request from GadgetHouse";
 
-    private final JavaMailSender mailSender;
-    private final MessageSource messages;
+    private Resend resend;
+    private SpringTemplateEngine templateEngine;
 
-    @Value("${spring.mail.username}")
-    private String supportEmail;
+    @Value("${RESEND_FROM_EMAIL}")
+    private String fromEmail;
+
     @Value("${frontend.server.url}")
     private String frontendServerUrl;
-    private final SpringTemplateEngine templateEngine;
 
-    @Async
-    public void sendResetPasswordEmail(String email, String recoveryLink) throws MessagingException {
-        Context context = new Context();
-        context.setVariable("recoveryLink", recoveryLink);
-        String htmlContent = templateEngine.process("password_recovery_email_template", context);
-        mailSender.send(constructEmail(NEW_PASSWORD_SUBJECT, htmlContent, email));
+    public MailService(
+            @Value("${RESEND_API_KEY}") String apiKey,
+            SpringTemplateEngine templateEngine,
+            @Value("${frontend.server.url}") String frontendServerUrl
+    ) {
+        this.resend = new Resend(apiKey);
+        this.templateEngine = templateEngine;
+        this.frontendServerUrl = frontendServerUrl;
     }
 
-    private MimeMessage constructEmail(String subject, String body, String email) throws MessagingException {
-        MimeMessage message = mailSender.createMimeMessage();
-        MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
-        helper.setTo(email);
-        helper.setSubject(subject);
-        helper.setText(body, true);
-        return message;
+    @Async
+    public void sendResetPasswordEmail(String email, String recoveryLink) {
+        log.debug("Start method sendResetPasswordEmail from MailService");
+
+        Context context = new Context();
+        log.debug("Context created");
+
+        context.setVariable("recoveryLink", recoveryLink);
+        log.debug("Variable recoveryLink is set");
+
+        String htmlContent = templateEngine.process("password_recovery_email_template", context);
+        log.debug("HTML template rendered");
+
+
+        try {
+            CreateEmailOptions params = CreateEmailOptions.builder()
+                    .from(fromEmail)
+                    .to(email)
+                    .subject(NEW_PASSWORD_SUBJECT)
+                    .html(htmlContent)
+                    .build();
+
+            CreateEmailResponse response = resend.emails().send(params);
+            log.info("Reset password email sent. Resend message id: {}", response.getId());
+
+        } catch (Exception e) {
+            log.error("Failed to send reset password email", e);
+            throw new RuntimeException("Failed to send email", e);
+        }
+        log.debug("method sendResetPasswordEmail from MailService completed");
     }
 }
