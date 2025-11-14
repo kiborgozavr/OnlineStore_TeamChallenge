@@ -13,10 +13,9 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+@Data
 @Entity
 @Table(name = "products")
-@Getter
-@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString(exclude = {"category","brand","images","cartItems"})

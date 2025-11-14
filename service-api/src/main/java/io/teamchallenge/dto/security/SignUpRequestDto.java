@@ -25,7 +25,7 @@ public class SignUpRequestDto {
     private String fullName;
 
     @Pattern(regexp = "^0\\d{9}$",
-            message = "Phone number must start with +380 and contain 12 digits in total")
+            message = "Phone number must start with 0 and contain 9 digits in total")
     @NotBlank
     private String phoneNumber;
 }

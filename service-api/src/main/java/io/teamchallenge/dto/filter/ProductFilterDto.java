@@ -14,14 +14,21 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class ProductFilterDto {
+
     private String name;
+
     private PriceFilter price;
+
     @Size(min = 1)
     private List<Long> brandIds;
+
     @Min(value = 1)
     private Long categoryId;
+
     @Size(min = 1)
     private List<Long> attributeValueIds;
+
     private CameraFilter cameraFilter;
+
     private List<Color> colors;
 }

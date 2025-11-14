@@ -29,6 +29,21 @@ values
     (27, 8, 'https://res.cloudinary.com/dtbnu6abl/image/upload/v1745929242/Product_image_1_stpgqc.png', 1),
     (29, 8, 'https://res.cloudinary.com/dtbnu6abl/image/upload/v1745929243/Product_image_2_rhaqz7.png', 3),
     (30, 8, 'https://res.cloudinary.com/dtbnu6abl/image/upload/v1745929246/Product_image_3_rrgllr.png', 4),
+    (89, 24, 'https://res.cloudinary.com/dpnzbwijt/image/upload/v1762897412/store/ruz32ysqd0t8d70qgxy7.webp', 1),
+    (82, 24, 'https://res.cloudinary.com/dpnzbwijt/image/upload/v1762897452/store/gliuh0hyjodegzbebxxn.webp', 2),
+    (83, 24, 'https://res.cloudinary.com/dpnzbwijt/image/upload/v1762897516/store/jv4mdf2alc7yrt18mbeg.webp', 3),
+    (84, 24, 'https://res.cloudinary.com/dpnzbwijt/image/upload/v1762897537/store/tkliy4udwem8i6jam7tn.webp', 4),
+
+    (85, 25, 'https://res.cloudinary.com/dpnzbwijt/image/upload/v1762899247/store/qongjkdvqijeyojxr2iz.webp', 1),
+    (86, 25, 'https://res.cloudinary.com/dpnzbwijt/image/upload/v1762899278/store/fucijqciwhrbkmoqgvts.webp', 2),
+    (87, 25, 'https://res.cloudinary.com/dpnzbwijt/image/upload/v1762899302/store/fonwzkoxhpecau0mp08j.webp', 3),
+    (88, 25, 'https://res.cloudinary.com/dpnzbwijt/image/upload/v1762899320/store/kqhlml66p8ph0uhkhllk.webp', 4),
+
+    (93, 26, 'https://res.cloudinary.com/dpnzbwijt/image/upload/v1763153339/store/efgn9asj4bmtemaszrec.webp', 4),
+    (90, 26, 'https://res.cloudinary.com/dpnzbwijt/image/upload/v1763153372/store/g1sxqepsciioz9kmphpb.webp', 4),
+    (91, 26, 'https://res.cloudinary.com/dpnzbwijt/image/upload/v1763153393/store/jon3q3ucix3bdmup4ic2.webp', 4),
+    (92, 26, 'https://res.cloudinary.com/dpnzbwijt/image/upload/v1763153425/store/yw4po4fixtxcd1fj5zy9.webp', 4),
+
     (31, 9,'https://res.cloudinary.com/dtbnu6abl/image/upload/v1745929386/Product_Image_svjd0w.png', 1),
     (32, 9, 'https://res.cloudinary.com/dtbnu6abl/image/upload/v1745929349/Product_Image_za9lje.png', 2),
     (33, 9, 'https://res.cloudinary.com/dtbnu6abl/image/upload/v1745929351/Product_Image_2_zwttz3.png', 3),
@@ -81,7 +96,7 @@ values
     (79, 23, 'https://res.cloudinary.com/dtbnu6abl/image/upload/v1754142469/41HuQPBFjOL_lq34ll_uqjxu7.jpg', 2),
     (80, 23, 'https://res.cloudinary.com/dtbnu6abl/image/upload/v1754142471/65305880-4_xhyfjm_x8zot8.jpg', 3);
 
-    --Last id is 81
+    --Last id is 93
 
 
 

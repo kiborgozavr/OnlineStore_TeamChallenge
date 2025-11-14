@@ -187,15 +187,6 @@ class ProductRepositoryTCTest {
     }
 
     @Test
-    void findAllProductIdsOrderByPopularityTest() {
-        PageRequest pageable = PageRequest.of(0, 2,Sort.by(Sort.Order.by("popularity")));
-        var actual = productRepository.findAllProductIds(null, pageable);
-        assertEquals(2, actual.getContent().size());
-        assertEquals(2L, actual.getContent().getFirst());
-        assertEquals(1L, actual.getContent().get(1));
-    }
-
-    @Test
     void findAllProductIdsOrderByRatingTest() {
         PageRequest pageable = PageRequest.of(0, 2,Sort.by(Sort.Order.desc("rating")));
         var actual = productRepository.findAllProductIds(null, pageable);

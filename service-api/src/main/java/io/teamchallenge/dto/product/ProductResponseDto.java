@@ -6,22 +6,15 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 
-@Getter
-@Setter
+import lombok.*;
+
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
 @Builder
-@EqualsAndHashCode
 public class ProductResponseDto {
+
     private Long id;
     private String shortDesc;
     private CategoryResponseDto categoryResponseDto;

@@ -16,7 +16,7 @@ values
     (11, 1, 46), -- SIM card size: Nano-SIM
     (12, 1, 48), -- Operating system: iOS
     (13, 1, 50), -- Processor frequency: 3.0 GHz
-    (14, 1, 52), -- Number of processor cores: Octa-core
+    (14, 1, 73), -- Number of processor cores: Hexa-core
     (15, 1, 109), -- Processor model: A17 Pro
     (16, 1, 57), -- Flesh card: No microSD support
     (17, 1, 111), -- Camera resolution: 48 MP
@@ -60,7 +60,7 @@ values
 
     -- Apple iPhone 15 Pro 256 Gb Blue Titanium
     (51, 4, 2),   -- Memory ROM: 256 Gb
-    (52, 4, 5),   -- Memory RAM: 6 Gb
+    (52, 4, 6),   -- Memory RAM: 8 Gb
     (53, 4, 9),   -- Color: Dark Blue
     (54, 4, 24),  -- Display diagonal: 6.12 inches
     (55, 4, 30),  -- Screen resolution: 2556 x 1179 pixels
@@ -72,7 +72,7 @@ values
     (61, 4, 46),  -- SIM card size: Nano-SIM
     (62, 4, 48),  -- Operating system: iOS
     (63, 4, 50),  -- Processor frequency: 3.0 GHz
-    (64, 4, 52),  -- Number of processor cores: Octa-core
+    (64, 4, 73),  -- Number of processor cores: Hexa-core
     (65, 4, 109),  -- Processor model: A17 Pro
     (66, 4, 57),  -- Flesh card: No microSD support
     (67, 4, 111),  -- Sensor resolution: 48 MP
@@ -82,7 +82,7 @@ values
     (69, 5, 6),   -- Memory RAM: 8 Gb
     (70, 5, 12),  -- Color: Light Blue
     (71, 5, 117),  -- Display diagonal: 6.4 inches
-    (72, 5, 29),  -- Screen resolution: 1080 x 2350 pixels
+    (72, 5, 27),  -- Screen resolution: 1080 x 2350 pixels
     (73, 5, 34),  -- Screen type: Dynamic AMOLED 2X
     (74, 5, 35),  -- Screen refresh rate: 120 Hz
     (75, 5, 42),  -- Communication standards: 5G
@@ -109,10 +109,10 @@ values
     (94, 6, 46),  -- SIM card size: Nano-SIM
     (95, 6, 48),  -- Operating system: iOS
     (96, 6, 50),  -- Processor frequency: 3.0 GHz
-    (97, 6, 52),  -- Number of processor cores: Octa-core
+    (97, 6, 73),  -- Number of processor cores: Hexa-core
     (98, 6, 120),  -- Processor model: A16 Bionic
     (99, 6, 57),  -- Flesh card: No microSD support
-    (100, 6, 59), -- Sensor resolution: 12 MP
+    (100, 6, 111), -- Main camera resolution: 48 MP
 
     -- Apple iPhone 15 128GB Pink
     (101, 7, 1),   -- Memory ROM: 128 Gb
@@ -128,16 +128,16 @@ values
     (111, 7, 46),  -- SIM card size: Nano-SIM
     (112, 7, 48),  -- Operating system: iOS
     (113, 7, 50),  -- Processor frequency: 3.0 GHz
-    (114, 7, 52),  -- Number of processor cores: Octa-core
+    (114, 7, 73),  -- Number of processor cores: Hexa-core
     (115, 7, 120),  -- Processor model: A16 Bionic
     (116, 7, 57),  -- Flesh card: No microSD support
-    (117, 7, 59),  -- Sensor resolution: 12 MP
+    (117, 7, 111),  -- Main camera resolution: 48 MP
 
     -- Apple iPhone 13 128Gb Starlight
     (118, 8, 1),   -- Memory ROM: 128 Gb
-    (119, 8, 5),   -- Memory RAM: 6 Gb
+    (119, 8, 6),   -- Memory RAM: 8 Gb
     (120, 8, 16),  -- Color: White
-    (121, 8, 25),  -- Display diagonal: 6.06 inches
+    (121, 8, 23),  -- Display diagonal: 6.1 inches
     (122, 8, 31),  -- Screen resolution: 2532 x 1170 pixels
     (123, 8, 32),  -- Screen type: Super Retina XDR OLED
     (124, 8, 36),  -- Screen refresh rate: 60 Hz
@@ -147,10 +147,67 @@ values
     (128, 8, 46),  -- SIM card size: Nano-SIM
     (129, 8, 48),  -- Operating system: iOS
     (130, 8, 50),  -- Processor frequency: 3.0 GHz
-    (131, 8, 52),  -- Number of processor cores: Octa-core
+    (131, 8, 73),  -- Number of processor cores: Hexa-core
     (132, 8, 112),  -- Processor model: A15 Bionic
     (133, 8, 57),  -- Flesh card: No microSD support
     (134, 8, 59),  -- Sensor resolution: 12 MP
+
+    -- Apple iPhone 13 128Gb RED
+    (286, 24, 1),   -- Memory ROM: 128 Gb
+    (287, 24, 6),   -- Memory RAM: 8 Gb
+    (288, 24, 130),  -- Color: red
+    (289, 24, 23),  -- Display diagonal: 6.1 inches
+    (290, 24, 31),  -- Screen resolution: 2532 x 1170 pixels
+    (291, 24, 32),  -- Screen type: Super Retina XDR OLED
+    (292, 24, 36),  -- Screen refresh rate: 60 Hz
+    (293, 24, 110),  -- Glass protection technology: Ceramic Shield
+    (294, 24, 43),  -- Communication standards: 4G LTE
+    (295, 24, 45),  -- Number of SIM cards: 1
+    (296, 24, 46),  -- SIM card size: Nano-SIM
+    (297, 24, 48),  -- Operating system: iOS
+    (298, 24, 50),  -- Processor frequency: 3.0 GHz
+    (299, 24, 73),  -- Number of processor cores: Hexa-core
+    (300, 24, 112),  -- Processor model: A15 Bionic
+    (301, 24, 57),  -- Flesh card: No microSD support
+    (302, 24, 59),  -- Sensor resolution: 12 MP
+
+    -- Apple iPhone 13 128Gb Midnight
+    (303, 25, 1),   -- Memory ROM: 128 Gb
+    (304, 25, 6),   -- Memory RAM: 8 Gb
+    (305, 25, 85),  -- Color: midnight
+    (306, 25, 23),  -- Display diagonal: 6.1 inches
+    (307, 25, 31),  -- Screen resolution: 2532 x 1170 pixels
+    (308, 25, 32),  -- Screen type: Super Retina XDR OLED
+    (309, 25, 36),  -- Screen refresh rate: 60 Hz
+    (310, 25, 110),  -- Glass protection technology: Ceramic Shield
+    (311, 25, 43),  -- Communication standards: 4G LTE
+    (312, 25, 45),  -- Number of SIM cards: 1
+    (313, 25, 46),  -- SIM card size: Nano-SIM
+    (314, 25, 48),  -- Operating system: iOS
+    (315, 25, 50),  -- Processor frequency: 3.0 GHz
+    (316, 25, 73),  -- Number of processor cores: Hexa-core
+    (317, 25, 112),  -- Processor model: A15 Bionic
+    (318, 25, 57),  -- Flesh card: No microSD support
+    (319, 25, 59),
+
+    -- Apple iPhone 13 128Gb Pink
+    (320, 25, 1),   -- Memory ROM: 128 Gb
+    (321, 25, 6),   -- Memory RAM: 8 Gb
+    (322, 25, 13),  -- Color: pink
+    (323, 25, 23),  -- Display diagonal: 6.1 inches
+    (324, 25, 31),  -- Screen resolution: 2532 x 1170 pixels
+    (325, 25, 32),  -- Screen type: Super Retina XDR OLED
+    (326, 25, 36),  -- Screen refresh rate: 60 Hz
+    (327, 25, 110),  -- Glass protection technology: Ceramic Shield
+    (328, 25, 43),  -- Communication standards: 4G LTE
+    (329, 25, 45),  -- Number of SIM cards: 1
+    (330, 25, 46),  -- SIM card size: Nano-SIM
+    (331, 25, 48),  -- Operating system: iOS
+    (332, 25, 50),  -- Processor frequency: 3.0 GHz
+    (333, 25, 73),  -- Number of processor cores: Hexa-core
+    (334, 25, 112),  -- Processor model: A15 Bionic
+    (335, 25, 57),  -- Flesh card: No microSD support
+    (336, 25, 59),
 
     -- Lenovo IdeaPad 1 15ALC7
     (135, 9, 2),    -- Memory ROM: 256 Gb
@@ -168,15 +225,15 @@ values
 
     -- Asus TUF Gaming A15
     (147, 10, 3),    -- Memory ROM: 512 Gb
-    (148, 10, 7),    -- Memory RAM: 8 Gb
+    (148, 10, 91),    -- Memory RAM: 16 Gb
     (149, 10, 10),   -- Color: Dark Grey
     (150, 10, 64),   -- Display diagonal: 15.6 inches
-    (151, 10, 66),   -- Screen resolution: 2560 x 1600 pixels
+    (151, 10, 67),   -- Screen resolution: 1920 x 1080 pixels
     (152, 10, 68),   -- Screen type: IPS
     (153, 10, 125),   -- Screen refresh rate: 144 Hz
     (154, 10, 102),   -- Processor model: Intel Core i5-12500H
     (155, 10, 78),   -- Processor frequency: 2.1 GHz
-    (156, 10, 73),   -- Number of processor cores: Hexa-core
+    (156, 10, 131),   -- Number of processor cores: 12-core
     (157, 10, 74),   -- Operating system: Windows 11
     (158, 10, 61),   -- Video card: Integrated
 
@@ -187,7 +244,7 @@ values
     (164, 11, 127),  -- Display diagonal: 15.3 inches
     (165, 11, 79),  -- Screen resolution: 2880 x 1864 pixels
     (166, 11, 80),  -- Screen type: Liquid Retina
-    (167, 11, 35),  -- Screen refresh rate: 120 Hz
+    (167, 11, 36),  -- Screen refresh rate: 60 Hz
     (168, 11, 81),  -- Processor model: Apple M3
     (169, 11, 82),  -- Processor frequency: 3.6 GHz
     (170, 11, 52),  -- Number of processor cores: Octa-core
@@ -234,7 +291,7 @@ values
     (199, 17, 67), --Screen resolution: 1920 x 1080 pixels
     (200, 17, 93), -- Processor model: Intel Core i5-1235U
     (201, 17, 94), --Processor frequency: 4.4 GHz
-    (202, 17, 52), -- Number of processor cores: Octa-core
+    (202, 17, 132), -- Number of processor cores: 10-core
     (203, 17, 83), --Operating system: Linux
     (204, 17, 76), --Video card: Integrated
 
@@ -258,7 +315,7 @@ values
     (219, 19, 67), --Screen resolution: 1920 x 1080 pixels
     (220, 19, 102), -- Processor model: Intel Core i5-12500H
     (221, 19, 101), --Processor frequency: 4.5 GHz
-    (222, 19, 52), -- Number of processor cores: Octa-core
+    (222, 19, 131), -- Number of processor cores: 12-core
     (223, 19, 95), --Operating system: FreeDOS
     (224, 19, 100), --Video card: NVIDIA GeForce RTX 3050
 
@@ -270,7 +327,7 @@ values
     (229, 20, 67), --Screen resolution: 1920 x 1080 pixels
     (230, 20, 104), -- Processor model: Intel Core i5-12450H
     (231, 20, 94), --Processor frequency: 4.4 GHz
-    (232, 20, 52), -- Number of processor cores: Octa-core
+    (232, 20, 73), -- Number of processor cores: Hexa-core
     (233, 20, 95), --Operating system: FreeDOS
     (234, 20, 105), --Video card: NVIDIA GeForce RTX 2050
 
@@ -289,7 +346,7 @@ values
     (245, 21, 46),  -- SIM card size: Nano-SIM
     (246, 21, 48),  -- Operating system: iOS
     (247, 21, 50),  -- Processor frequency: 3.0 GHz
-    (248, 21, 52),  -- Number of processor cores: Octa-core
+    (248, 21, 73),  -- Number of processor cores: Hexa-core
     (249, 21, 120),  -- Processor model: A16 Bionic
     (250, 21, 57),  -- Flesh card: No microSD support
     (251, 21, 59), -- Sensor resolution: 12 MP
@@ -303,13 +360,13 @@ values
     (256, 22, 30),  -- Screen resolution: 2556 x 1179 pixels
     (257, 22, 32),  -- Screen type: Super Retina XDR OLED
     (258, 22, 36),  -- Screen refresh rate: 60 Hz
-    (259, 22, 40),  -- Glass protection technology: Gorilla Glass 5
+    (259, 22, 110),  -- Glass protection technology: Ceramic Shield
     (260, 22, 43),  -- Communication standards: 4G LTE
     (261, 22, 45),  -- Number of SIM cards: 1
     (262, 22, 46),  -- SIM card size: Nano-SIM
     (263, 22, 48),  -- Operating system: iOS
     (264, 22, 50),  -- Processor frequency: 3.0 GHz
-    (265, 22, 52),  -- Number of processor cores: Octa-core
+    (265, 22, 73),  -- Number of processor cores: Hexa-core
     (266, 22, 120),  -- Processor model: A14 Bionic
     (267, 22, 57),  -- Flesh card: No microSD support
     (268, 22, 59), -- Sensor resolution: 12 MP
@@ -329,7 +386,9 @@ values
     (279, 23, 46),  -- SIM card size: Nano-SIM
     (280, 23, 48),  -- Operating system: iOS
     (281, 23, 50),  -- Processor frequency: 3.0 GHz
-    (282, 23, 52),  -- Number of processor cores: Octa-core
+    (282, 23, 73),  -- Number of processor cores: Hexa-core
     (283, 23, 109),  -- Processor model: A17 Pro
     (284, 23, 57),  -- Flesh card: No microSD support
     (285, 23, 111); -- Sensor resolution: 48 MP
+
+-- last id = 302
