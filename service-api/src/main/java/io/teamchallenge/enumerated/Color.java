@@ -10,8 +10,7 @@ public enum Color {
     GREY("808080"),
     GOLD("FFD700"),
     ORANGE("FFA500"),
-    PINK("FFC0CB"),
-    MIDNIGHT ("191970");
+    PINK("FFC0CB");
 
     private final String hex;
 

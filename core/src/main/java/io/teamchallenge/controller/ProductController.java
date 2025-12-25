@@ -10,7 +10,6 @@ import io.teamchallenge.dto.pageable.PageableDto;
 import io.teamchallenge.dto.product.ProductRequestDto;
 import io.teamchallenge.dto.product.ProductResponseDto;
 import io.teamchallenge.dto.product.ShortProductResponseDto;
-import io.teamchallenge.entity.Product;
 import io.teamchallenge.enumerated.Color;
 import io.teamchallenge.service.impl.ProductService;
 import jakarta.validation.Valid;
@@ -50,7 +49,7 @@ public class ProductController {
      * @param maxPrice          The maximum price to filter by.
      * @param pageable          Pageable object for pagination and sorting information.
      *                          Parameters: page, size, sort.
-     *                          Allowed sort fields: "price", "popularity", "rating".
+     *                          Allowed sort fields: "price", "rating".
      *                          Default sort: "price" in descending order.
      * @return ResponseEntity containing a pageable list of short product responses.
      */
@@ -65,7 +64,7 @@ public class ProductController {
         @RequestParam(required = false) String minMP,
         @RequestParam(required = false) String maxMP,
         @RequestParam(required = false) List<Color> colors,
-        @AllowedSortFields(values = {"price","popularity","rating"})
+        @AllowedSortFields(values = {"price", "rating"})
         @PageableDefault(sort = "price", direction = DESC) Pageable pageable) {
         ProductFilterDto productFilterDto = ProductFilterDto.builder()
             .name(name)
@@ -152,6 +151,7 @@ public class ProductController {
 
     @GetMapping("/search")
     public ResponseEntity<PageableDto<ShortProductResponseDto>> getSearchResults(@RequestParam String query,
+                                                                                 @AllowedSortFields(values = {"price", "rating"})
                                                                                  @PageableDefault(sort = "price", direction = DESC) Pageable pageable) {
         return ResponseEntity.ok(productService.getSearchResults(query, pageable));
     }
