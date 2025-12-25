@@ -8,7 +8,7 @@ values
     (24, 'Apple iPhone 13 128Gb RED', 1, 'Apple iPhone 13 128Gb RED', 'Apple iPhone 13 128Gb Starlight',
      23000, 100, '2021-01-01', 1, '8888882', 'RED'),
     (25, 'Apple iPhone 13 128Gb Midnight', 1, 'Apple iPhone 13 128Gb Midnight', 'Apple iPhone 13 128Gb Starlight',
-     23000, 100, '2021-01-01', 1, '8888883', 'MIDNIGHT'),
+     23000, 100, '2021-01-01', 1, '8888883', 'BLACK'),
     (26, 'Apple iPhone 13 128Gb PINK', 1, 'Apple iPhone 13 128Gb PINK', 'Apple iPhone 13 128Gb Starlight',
      23000, 100, '2021-01-01', 1, '8888884', 'PINK'),
 
@@ -19,6 +19,9 @@ values
      '2021-01-01', 1, '666666', 'GREEN'),
     (7, 'Apple iPhone 15 128GB Pink', 1, 'Apple iPhone 15 128GB Pink', 'Apple iPhone 15 128GB Pink', 28300, 1,
      '2021-01-01', 1, '777777', 'PINK'),
+
+    (21, 'Apple iPhone 15 256Gb Blue', 1, 'Apple iPhone 15 256Gb Blue', 'Apple iPhone 15 256Gb Blue', 37600, 100,
+     '2021-01-01', 1, '030303', 'BLUE'),
 
     (22, 'Apple iPhone 15 Pro 256Gb Natural Titanium', 1, 'Apple iPhone 15 Pro 256Gb Natural Titanium',
      'Apple iPhone 15 Pro 256Gb Natural Titanium', 47000, 1, '2021-01-01', 1, '040404', 'GREY'),
@@ -79,10 +82,7 @@ values
         'GREY'),
 
     (20, 'Lenovo LOQ 15IRH8', 2, 'Lenovo LOQ 15IRH8', 'Lenovo LOQ 15IRH8', 37800, 100, '2023-01-01', 3, '020202',
-        'GREY'),
-
-    (21, 'Apple iPhone 15 256Gb Blue', 1, 'Apple iPhone 15 256Gb Blue', 'Apple iPhone 15 256Gb Blue', 37600, 100,
-        '2021-01-01', 1, '030303', 'BLUE')
+        'GREY')
 
     ;
 --next id = 27

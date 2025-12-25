@@ -135,7 +135,7 @@ values
 
     -- Apple iPhone 13 128Gb Starlight
     (118, 8, 1),   -- Memory ROM: 128 Gb
-    (119, 8, 6),   -- Memory RAM: 8 Gb
+    (119, 8, 4),   -- Memory RAM: 4 Gb
     (120, 8, 16),  -- Color: White
     (121, 8, 23),  -- Display diagonal: 6.1 inches
     (122, 8, 31),  -- Screen resolution: 2532 x 1170 pixels

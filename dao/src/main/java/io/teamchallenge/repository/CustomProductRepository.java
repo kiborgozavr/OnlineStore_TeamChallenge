@@ -32,4 +32,7 @@ public interface CustomProductRepository {
      * @return A Page object containing the IDs of products.
      */
     Page<Long> findAllProductIds(@Nullable Specification<Product> specification, Pageable pageable);
+
+    Page<Long> findSearchProductIds(String query, Pageable pageable);
+
 }

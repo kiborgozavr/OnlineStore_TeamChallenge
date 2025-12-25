@@ -30,6 +30,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import lombok.RequiredArgsConstructor;
@@ -244,20 +245,32 @@ public class ProductService {
     }
 
     public PageableDto<ShortProductResponseDto> getSearchResults(String query, Pageable pageable) {
-        Page<Product> products = productRepository.getSearchResults(query.toLowerCase(), pageable);
 
-        var content = products.getContent().stream()
-            .map(product -> modelMapper.map(product, ShortProductResponseDto.class))
-            .toList();
+        Page<Long> pageIds =
+                productRepository.findSearchProductIds(query, pageable);
+
+        Map<Long, ShortProductResponseDto> productMap =
+                productRepository.findByIdsWithCollections(pageIds.getContent())
+                        .stream()
+                        .map(p -> modelMapper.map(p, ShortProductResponseDto.class))
+                        .collect(Collectors.toMap(
+                                ShortProductResponseDto::getId,
+                                Function.identity()
+                        ));
+
+        List<ShortProductResponseDto> content = pageIds.getContent().stream()
+                .map(productMap::get)
+                .toList();
 
         return PageableDto.<ShortProductResponseDto>builder()
-            .page(content)
-            .totalElements(products.getTotalElements())
-            .currentPage(products.getPageable().getPageNumber())
-            .totalPages(products.getTotalPages())
-            .build();
-
+                .page(content)
+                .totalElements(pageIds.getTotalElements())
+                .currentPage(pageIds.getNumber())
+                .totalPages(pageIds.getTotalPages())
+                .build();
     }
+
+
     private void addNewImages(List<MultipartFile> multipartFiles, Product product) {
         for (short i = 0; i < multipartFiles.size(); i++) {
             short j = (short) (i + 1);
