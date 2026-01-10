@@ -8,6 +8,7 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -64,7 +65,7 @@ public class SecurityController {
     }
 
     @PostMapping("/reset-password")
-    public ResponseEntity<?> sendLinkForPasswordReset(@RequestParam("email") String email){
+    public ResponseEntity<?> sendLinkForPasswordReset(@RequestParam("email") String email) {
         log.debug("start reset-password endpoint");
 
         Optional<User> user = userService.getUser(email);
@@ -96,7 +97,7 @@ public class SecurityController {
     }
 
     @PostMapping("/create-new-admin")
-    public ResponseEntity<NewAdminResponseDto> createNewAdmin(@RequestBody @Valid NewAdminDto dto) {
-        return ResponseEntity.status(201).body(securityService.createNewAdmin(dto));
+    public ResponseEntity<NewAdminResponseDto> createNewAdmin(@RequestBody @Valid NewAdminRequestDto dto) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(securityService.createNewAdmin(dto));
     }
 }

@@ -86,42 +86,11 @@ public class User {
     private String resetPasswordToken;
 
     /**
-     * Adds a cart item to the user's list of cart items.
-     * Also sets the user for the added cart item.
-     *
-     * @param cartItem The cart item to be added.
-     */
-    public void addCarItem(CartItem cartItem) {
-        cartItems.add(cartItem);
-        cartItem.setUser(this);
-    }
-
-    /**
-     * Removes a cart item from the user's list of cart items.
-     * Also sets the user of the removed cart item to null.
-     *
-     * @param cartItem The cart item to be removed.
-     */
-    public void removeCarItem(CartItem cartItem) {
-        cartItems.remove(cartItem);
-        cartItem.setUser(null);
-    }
-
-    /**
      * Adds an order to the user's list of orders.
      *
      * @param order The order to be added.
      */
     public void addOrder(Order order) {
         orders.add(order);
-    }
-
-    /**
-     * Removes an order from the user's list of orders.
-     *
-     * @param order The order to be removed.
-     */
-    public void removeOrder(Order order) {
-        orders.remove(order);
     }
 }

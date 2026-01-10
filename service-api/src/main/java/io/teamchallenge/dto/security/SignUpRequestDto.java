@@ -11,6 +11,7 @@ import lombok.*;
 @Builder
 public class SignUpRequestDto {
 
+    @NotBlank
     @Email(message = "Please, insert valid email address")
     private String email;
 

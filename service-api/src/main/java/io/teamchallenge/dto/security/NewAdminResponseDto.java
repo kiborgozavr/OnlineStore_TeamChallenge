@@ -1,16 +1,16 @@
 package io.teamchallenge.dto.security;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder
 public class NewAdminResponseDto {
 
-    private final String message = "New Admin Created";
+    private String message = "New Admin Created";
     private String fullName;
     private String email;
+    private String phoneNumber;
 }

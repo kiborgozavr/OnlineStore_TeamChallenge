@@ -76,9 +76,7 @@ public class SecurityService {
         user.setRole(Role.ROLE_USER);
         user.setPassword(passwordEncoder.encode(signUpRequestDto.getPassword()));
         userRepository.save(user);
-        SignUpResponseDto responseDto = modelMapper.map(user, SignUpResponseDto.class);
-
-        return responseDto;
+        return modelMapper.map(user, SignUpResponseDto.class);
     }
 
     /**
@@ -130,17 +128,20 @@ public class SecurityService {
     }
 
     @Transactional
-    public NewAdminResponseDto createNewAdmin(NewAdminDto dto) {
+    public NewAdminResponseDto createNewAdmin(NewAdminRequestDto dto) {
+        log.info("Creation of new admin");
         if (userRepository.existsByEmail(dto.getEmail())) {
             throw new AlreadyExistsException(ExceptionMessage.USER_WITH_EMAIL_ALREADY_EXISTS.formatted(dto.getEmail()));
         }
+        if (userRepository.existsByPhoneNumber(dto.getPhoneNumber())) {
+            throw new AlreadyExistsException(
+                    ExceptionMessage.USER_WITH_PHONE_NUMBER_ALREADY_EXISTS.formatted(dto.getPhoneNumber()));
+        }
 
-        User admin = User.builder()
-                .email(dto.getEmail())
-                .fullName(dto.getFullName())
-                .password(passwordEncoder.encode(dto.getPassword()))
-                .role(Role.ROLE_ADMIN)
-                .build();
+        User admin = modelMapper.map(dto, User.class);
+        admin.setPassword(passwordEncoder.encode(dto.getPassword()));
+        admin.setRole(Role.ROLE_ADMIN);
+        admin.setRefreshTokenKey(jwtService.generateTokenKey());
 
         return modelMapper.map(userRepository.save(admin), NewAdminResponseDto.class);
     }
